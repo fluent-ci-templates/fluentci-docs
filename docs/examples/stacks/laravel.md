@@ -3,4 +3,51 @@ sidebar_position: 3
 title: Laravel
 ---
 
-Coming soon...
+## Running the pre-built Laravel pipeline directly
+
+Run the following command to run the pre-built [Laravel pipeline](https://github.com/fluent-ci-templates/laravel-pipeline) without having to initialize a project:
+
+```bash
+dagger run fluentci laravel_pipeline
+```
+
+## Add Laravel Pipeline to your project
+
+Run the following command to add a Laravel pipeline to your project:
+
+```bash
+fluentci init -t laravel
+```
+
+This will create a `.fluentci` directory in your project, feel free to customize the pipeline for your needs.
+You can then run the following command to start the pipeline:
+
+```bash
+dagger run fluentci .
+```
+
+
+## Jobs
+
+| Job       | Description   |
+| --------- | ------------- |
+| test      | Run test      |
+
+## Programmatic usage
+
+You can also use this pipeline programmatically:
+
+```ts
+import Client, { connect } from "@dagger.io/dagger";
+import { Dagger } from "https://deno.land/x/laravel_pipeline/mod.ts";
+
+const { test } = Dagger;
+
+function pipeline(src = ".") {
+  connect(async (client: Client) => {
+    await test(client, src);
+  });
+}
+
+pipeline();
+```
