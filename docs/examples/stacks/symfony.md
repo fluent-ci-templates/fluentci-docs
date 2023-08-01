@@ -60,7 +60,7 @@ const { phpcs,
 
 function pipeline(src = ".") {
   connect(async (client: Client) => {
-    await phpc(client, src);
+    await phpcs(client, src);
     await phpstan(client, src);
     await twigLint(client, src);
     await xliffLint(client, src);
