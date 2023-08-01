@@ -13,7 +13,7 @@ dagger run fluentci deno_pipeline
 
 ## Add Deno Pipeline to your project
 
-Run the following command to add a Go pipeline to your project:
+Run the following command to add Go pipeline to your project:
 
 ```bash
 fluentci init -t go

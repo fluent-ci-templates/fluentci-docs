@@ -13,7 +13,7 @@ dagger run fluentci rust_pipeline
 
 ## Add Rust Pipeline to your project
 
-Run the following command to add a Rust pipeline to your project:
+Run the following command to add Rust pipeline to your project:
 
 ```bash
 fluentci init -t rust

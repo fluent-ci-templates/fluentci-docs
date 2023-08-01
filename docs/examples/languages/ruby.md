@@ -13,7 +13,7 @@ dagger run fluentci ruby_pipeline
 
 ## Add Ruby Pipeline to your project
 
-Run the following command to add a Ruby pipeline to your project:
+Run the following command to add Ruby pipeline to your project:
 
 ```bash
 fluentci init -t ruby

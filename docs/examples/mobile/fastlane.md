@@ -13,7 +13,7 @@ dagger run fluentci fastlane_pipeline
 
 ## Add Deno Pipeline to your project
 
-Run the following command to add a Fastlane pipeline to your project:
+Run the following command to add Fastlane pipeline to your project:
 
 ```bash
 fluentci init -t fastlane

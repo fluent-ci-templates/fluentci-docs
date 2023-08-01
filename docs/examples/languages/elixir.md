@@ -13,7 +13,7 @@ dagger run fluentci elixir_pipeline
 
 ## Add Elixir Pipeline to your project
 
-Run the following command to add a Elixir pipeline to your project:
+Run the following command to add Elixir pipeline to your project:
 
 ```bash
 fluentci init -t elixir

@@ -13,7 +13,7 @@ dagger run fluentci android_pipeline
 
 ## Add Android Pipeline to your project
 
-Run the following command to add a Android pipeline to your project:
+Run the following command to add Android pipeline to your project:
 
 ```bash
 fluentci init -t android
