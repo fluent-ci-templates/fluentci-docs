@@ -8,7 +8,7 @@ title: Symfony
 Run the following command to run the pre-built [Symfony pipeline](https://github.com/fluent-ci-templates/symfony-pipeline) without having to initialize a project:
 
 ```bash
-dagger run fluentci symfony
+dagger run fluentci symfony_pipeline
 ```
 
 ## Add Symfony Pipeline to your project
