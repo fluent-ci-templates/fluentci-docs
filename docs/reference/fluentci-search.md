@@ -12,7 +12,7 @@ fluentci search <query> [options]
 ### Example
 
 ```sh
-$ fluenci search fastlane
+$ fluenci search android
 Found 2 results for "android":
 
 * android_pipeline@v0.2.6 - ready-to-use pipeline and jobs for Android projects
