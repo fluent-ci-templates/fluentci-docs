@@ -16,7 +16,7 @@ fluentci init [pipeline] [options]
 | `--help`, `-h` | help for init |
 | `--template`, `-t` | The name of the pipeline template to use. |
 
-### List of templates
+### List of pre-built pipelines
 
 - [android](https://github.com/fluent-ci-templates/android-pipeline)
 - [elixir](https://github.com/fluent-ci-templates/elixir-pipeline)
@@ -25,4 +25,7 @@ fluentci init [pipeline] [options]
 - [fastlane](https://github.com/fluent-ci-templates/fastlane-pipeline)
 - [flutter](https://github.com/fluent-ci-templates/ruby-pipeline)
 - [go](https://github.com/fluent-ci-templates/go-pipeline)
+- [laravel](https://github.com/fluent-ci-templates/laravel-pipeline)
+- [ruby](https://github.com/fluent-ci-templates/ruby-pipeline)
 - [rust](https://github.com/fluent-ci-templates/rust-pipeline)
+- [symfony](https://github.com/fluent-ci-templates/symfony-pipeline)
