@@ -39,7 +39,7 @@ dagger run fluentci .
 
 | Job       | Description   |
 | --------- | ------------- |
-| test      | Run test      |
+| test      | Run tests      |
 
 ## Programmatic usage
 
