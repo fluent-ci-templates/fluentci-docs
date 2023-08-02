@@ -26,6 +26,12 @@ You can then run the following command to start the pipeline:
 dagger run fluentci .
 ```
 
+## Environment variables
+
+| Variable               | Description                             |
+| ---------------------- | --------------------------------------- |
+|  HEROKU_APP_NAME       | The name of the Heroku app to deploy to |
+|  HEROKU_PRODUCTION_KEY | The API key to use to deploy to Heroku  |
 
 ## Jobs
 
