@@ -23,7 +23,6 @@ fluentci init [pipeline] [options]
 - [deno](https://github.com/fluent-ci-templates/deno-pipeline)
 - [django](https://github.com/fluent-ci-templates/django-pipeline)
 - [fastlane](https://github.com/fluent-ci-templates/fastlane-pipeline)
-- [flutter](https://github.com/fluent-ci-templates/ruby-pipeline)
 - [go](https://github.com/fluent-ci-templates/go-pipeline)
 - [laravel](https://github.com/fluent-ci-templates/laravel-pipeline)
 - [ruby](https://github.com/fluent-ci-templates/ruby-pipeline)
