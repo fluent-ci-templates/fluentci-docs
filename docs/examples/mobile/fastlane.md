@@ -19,6 +19,12 @@ Run the following command to add Fastlane pipeline to your project:
 fluentci init -t fastlane
 ```
 
+This will create a `.fluentci` directory in your project, feel free to customize the pipeline for your needs.
+You can then run the following command to start the pipeline:
+
+```bash
+dagger run fluentci .
+```
 
 ## Jobs
 
@@ -45,10 +51,3 @@ function pipeline(src = ".") {
 pipeline();
 ```
 
-
-This will create a `.fluentci` directory in your project, feel free to customize the pipeline for your needs.
-You can then run the following command to start the pipeline:
-
-```bash
-dagger run fluentci .
-```
