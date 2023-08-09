@@ -22,35 +22,23 @@ fluentci init -t fastlane
 
 ## Jobs
 
-| Job                          | Description                            |
-| --------------------------- | --------------------------------------- |
-| buildRelease                | generate apk (release)                  |
-| internalDistribute          | distribute to internal testers          |
-| alphaDistribute             | distribute to alpha testers             |
-| betaDistribute              | distribute to beta testers              |
-| productionDistribute        | distribute to production testers        |
-| promoteAlphaToBeta          | promote alpha to beta                   |
-| promoteBetaToProduction     | promote beta to production              |
-| promoteAlphaToProduction    | promote alpha to production             |
-| promoteInternalToAlpha      | promote internal to alpha               |
-| promoteInternalToBeta       | promote internal to beta                |
-| promoteInternalToProduction | promote internal to production          |
-| firebaseAppDistribution     | distribute to firebase app distribution |
-| appCenterDistribute         | distribute to app center                |
+| Job      | Description              |
+| -------- | ------------------------ |
+| execLane | Executes a Fastlane lane |
 
 ## Programmatic usage
 
 You can also use this pipeline programmatically:
 
 ```ts
-import Client, { connect } from "@dagger.io/dagger";
+import { Client, connect } from "https://esm.sh/@dagger.io/dagger@0.8.1";
 import { Dagger } from "https://deno.land/x/fastlane_pipeline/mod.ts";
 
-const { buildRelease } = Dagger;
+const { execLane } = Dagger;
 
 function pipeline(src = ".") {
   connect(async (client: Client) => {
-    await buildRelease(client, src);
+    await execLane(client, "buildRelease", src);
   });
 }
 
