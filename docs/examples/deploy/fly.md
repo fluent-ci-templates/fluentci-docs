@@ -1,6 +1,17 @@
 ---
-sidebar_position: 4
+sidebar_position: 5
 title: Fly
 ---
 
-Coming soon...
+
+Run the following command to run the pre-built [Fly Pipeline](https://github.com/fluent-ci-templates/fly-pipeline) in your project to deploy your application to [fly.io](http://fly.io):
+
+```bash
+dagger run fluentci fly_pipeline deploy
+```
+
+## Environment variables
+
+| Variable      | Description        |
+| --------------| -------------------|
+| FLY_API_TOKEN | Your Fly API Token |
