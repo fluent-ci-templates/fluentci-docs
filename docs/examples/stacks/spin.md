@@ -27,6 +27,12 @@ You can then run the following command to start the pipeline:
 dagger run fluentci .
 ```
 
+## Environment Variables
+
+| Variable        | Description                      |
+|-----------------|----------------------------------|
+| SPIN_AUTH_TOKEN | Your Fermyon Cloud Access Token. |
+
 
 ## Jobs
 
