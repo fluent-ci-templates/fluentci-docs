@@ -16,3 +16,29 @@ dagger run fluentci heroku_pipeline deploy
 |-----------------|---------------------|
 | HEROKU_API_KEY  | Your Heroku API Key |
 | HEROKU_APP_NAME | Your Heroku App     |
+
+## Jobs
+
+| Job     | Description                       |
+|---------|-----------------------------------|
+| deploy  | Deploys your application to Heroku. |
+
+## Programmatic usage
+
+You can also use this pipeline programmatically:
+
+```typescript
+import { Client, connect } from "https://esm.sh/@dagger.io/dagger@0.8.1";
+import { Dagger } from "https://deno.land/x/heroku_pipeline/mod.ts";
+
+const { deploy } = Dagger;
+
+function pipeline(src = ".") {
+  connect(async (client: Client) => {
+    await deploy(client, src);
+  });
+}
+
+pipeline();
+
+```

@@ -15,3 +15,29 @@ dagger run fluentci codecov_pipeline upload
 |---------------|---------------------|----------|
 | CODECOV_TOKEN | Your Codecov token. | Required |
 | CODECOV_URL   | Your Codecov URL.   | Optional |
+
+## Jobs
+
+| Job     | Description                      |
+|---------|----------------------------------|
+| upload  | Uploads coverage to Codecov.     |
+
+## Programmatic usage
+
+You can also use this pipeline programmatically:
+
+```typescript
+import { Client, connect } from "https://esm.sh/@dagger.io/dagger@0.8.1";
+import { Dagger } from "https://deno.land/x/codecov_pipeline/mod.ts";
+
+const { upload } = Dagger;
+
+function pipeline(src = ".") {
+  connect(async (client: Client) => {
+    await upload(client, src);
+  });
+}
+
+pipeline();
+
+```

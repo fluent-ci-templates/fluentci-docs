@@ -38,11 +38,12 @@ dagger run fluentci .
 
 ## Jobs
 
-| Job   | Description      |
-| ----- | ---------------- |
-| fmt   | Format your code |
-| lint  | Lint your code   |
-| test  | Run your tests   |
+| Job    | Description           |
+| ------ | --------------------- |
+| fmt    | Format your code      |
+| lint   | Lint your code        |
+| test   | Run your tests        |
+| deploy | Deploy to Deno Deploy |
 
 ## Programmatic usage
 

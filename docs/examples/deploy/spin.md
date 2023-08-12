@@ -15,3 +15,29 @@ dagger run fluentci spin_pipeline build deploy
 | Variable        | Description                      |
 |-----------------|----------------------------------|
 | SPIN_AUTH_TOKEN | Your Fermyon Cloud Access Token. |
+
+## Jobs
+
+| Job     | Description                                                         |
+|---------|---------------------------------------------------------------------|
+| build   | Build your Spin application (Only Rust is supported at the moment). |
+| deploy  | Deploy your Spin application to Fermyon Platform.                   |
+
+## Programmatic usage
+
+You can also use this pipeline programmatically:
+
+```typescript
+import { Client, connect } from "https://esm.sh/@dagger.io/dagger@0.8.1";
+import { Dagger } from "https://deno.land/x/spin_pipeline/mod.ts";
+
+const { build, deploy } = Dagger;
+
+function pipeline(src = ".") {
+  connect(async (client: Client) => {
+    await build(client, src);
+    await deploy(client, src);
+  });
+}
+
+pipeline();

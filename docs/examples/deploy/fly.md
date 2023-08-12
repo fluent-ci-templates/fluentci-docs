@@ -15,3 +15,29 @@ dagger run fluentci fly_pipeline deploy
 | Variable      | Description        |
 | --------------| -------------------|
 | FLY_API_TOKEN | Your Fly API Token |
+
+## Jobs
+
+| Job     | Description                      |
+|---------|----------------------------------|
+| deploy  | Deploys your application to Fly. |
+
+## Programmatic usage
+
+You can also use this pipeline programmatically:
+
+```typescript
+import { Client, connect } from "https://esm.sh/@dagger.io/dagger@0.8.1";
+import { Dagger } from "https://deno.land/x/fly_pipeline/mod.ts";
+
+const { deploy } = Dagger;
+
+function pipeline(src = ".") {
+  connect(async (client: Client) => {
+    await deploy(client, src);
+  });
+}
+
+pipeline();
+
+```

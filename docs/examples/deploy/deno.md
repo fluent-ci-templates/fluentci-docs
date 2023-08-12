@@ -19,3 +19,21 @@ dagger run fluentci deno_pipeline deploy
 | DENO_DEPLOY_TOKEN | Your Deno Deploy token    |            |
 | DENO_MAIN_SCRIPT  | Your main script          | `main.tsx` |
 
+## Programmatic usage
+
+You can also use this pipeline programmatically:
+
+```ts
+import Client, { connect } from "@dagger.io/dagger";
+import { Dagger } from "https://deno.land/x/deno_pipeline/mod.ts";
+
+const { deploy } = Dagger;
+
+function pipeline(src = ".") {
+  connect(async (client: Client) => {
+    await deploy(client, src);
+  });
+}
+
+pipeline();
+```
