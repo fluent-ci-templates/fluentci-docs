@@ -1,26 +1,19 @@
 ---
-sidebar_position: 1
-title: fluentci
+sidebar_position: 5
+title: fluentci docs
 ---
 
-Run pipeline using [Dagger CI](https://daggerci.io/) and pre-built pipelines from the [Fluent CI](https://fluentci.io/), a collection of pre-built pipelines for common CI/CD workflows written in TypeScript (you don't need to run `fluentci init`).
+Show the Pipeline documentation in the terminal.
 
 ```bash
-fluentci <pipeline> [jobs...] [options]
+fluentci docs [pipeline]
 ```
 
-Or run the pipeline in the current directory (requires `fluentci init`):
+## Arguments
 
-```bash
-fluentci .
-```
-
-### Options
-
-| Option           | Description                       |
-| ---------------- | --------------------------------- |
-| `--help`, `-h`   | help for fluentci                 |
-| `--reload`, `-r` | Reload the pippeline source cache |
+| Argument | Description                                        |
+|----------|----------------------------------------------------|
+| pipeline | The pipeline to show documentation for. (optional) |
 
 ### List of pre-built pipelines
 
@@ -34,3 +27,4 @@ fluentci .
 - [ruby](https://github.com/fluent-ci-templates/ruby-pipeline)
 - [rust](https://github.com/fluent-ci-templates/rust-pipeline)
 - [symfony](https://github.com/fluent-ci-templates/symfony-pipeline)
+

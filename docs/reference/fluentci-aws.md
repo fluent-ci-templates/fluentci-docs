@@ -1,26 +1,28 @@
 ---
-sidebar_position: 1
-title: fluentci
+sidebar_position: 2
+title: fluentci aws
 ---
 
-Run pipeline using [Dagger CI](https://daggerci.io/) and pre-built pipelines from the [Fluent CI](https://fluentci.io/), a collection of pre-built pipelines for common CI/CD workflows written in TypeScript (you don't need to run `fluentci init`).
+Generate AWS Codepipeline `buildspec.yml` file for your project.
 
 ```bash
-fluentci <pipeline> [jobs...] [options]
-```
-
-Or run the pipeline in the current directory (requires `fluentci init`):
-
-```bash
-fluentci .
+fluentci ac init [options]
 ```
 
 ### Options
 
-| Option           | Description                       |
-| ---------------- | --------------------------------- |
-| `--help`, `-h`   | help for fluentci                 |
-| `--reload`, `-r` | Reload the pippeline source cache |
+| Option             | Description                               |
+| ------------------ | ----------------------------------------- |
+| `--help`, `-h`     | help for init                             |
+| `--template`, `-t` | The name of the pipeline template to use. |
+| `--reload`, `-r`   | Reload the pipeline source cache.         |
+
+### Example
+
+```bash
+fluentci ac init -t android_pipeline
+`buildspec.yml` generated successfully ✅
+```
 
 ### List of pre-built pipelines
 
@@ -34,3 +36,4 @@ fluentci .
 - [ruby](https://github.com/fluent-ci-templates/ruby-pipeline)
 - [rust](https://github.com/fluent-ci-templates/rust-pipeline)
 - [symfony](https://github.com/fluent-ci-templates/symfony-pipeline)
+
