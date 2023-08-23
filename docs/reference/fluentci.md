@@ -3,7 +3,7 @@ sidebar_position: 1
 title: fluentci
 ---
 
-Run pipeline using [Dagge](https://dagger.io/) and pre-built pipelines from the [Fluent CI](https://fluentci.io/), a collection of pre-built pipelines for common CI/CD workflows written in TypeScript (you don't need to run `fluentci init`).
+Run pipeline using [Dagger](https://dagger.io/) and pre-built pipelines from the [Fluent CI](https://fluentci.io/), a collection of pre-built pipelines for common CI/CD workflows written in TypeScript (you don't need to run `fluentci init`).
 
 ```bash
 fluentci [pipeline] [jobs...] [options]
