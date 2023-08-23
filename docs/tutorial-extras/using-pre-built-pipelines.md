@@ -17,5 +17,5 @@ To use a pipeline, you need to browse the list of available pipelines and select
 Example:
 
 ```bash
-dagger run fluentci android_pipeline
+fluentci run android_pipeline
 ```

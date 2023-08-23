@@ -9,3 +9,15 @@ Once you have configured your pipeline, you can run it using the `dagger run` co
 ```bash
 dagger run fluentci .
 ```
+
+Or just:
+
+```bash
+fluentci run .
+```
+
+Or simply:
+
+```bash
+fluentci
+```
