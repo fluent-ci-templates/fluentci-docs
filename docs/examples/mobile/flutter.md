@@ -11,7 +11,7 @@ Run the following command to run the pre-built [Flutter pipeline](https://github
 fluentci run flutter_pipeline
 ```
 
-## Add Android Pipeline to your project
+## Add Flutter Pipeline to your project
 
 Run the following command to add Android pipeline to your project:
 
