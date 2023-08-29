@@ -6,7 +6,7 @@ title: Gleam
 
 ## Running the pre-built Gleam pipeline directly
 
-Run the following command to run the pre-built [Gleam pipeline](https://github.com/fluent-ci-templates/gleam-pipeline) without having to initialize a project:
+Run the following command to run the pre-built [Gleam Pipeline](https://github.com/fluent-ci-templates/gleam-pipeline) without having to initialize a project:
 
 ```bash
 fluentci run gleam_pipeline
@@ -14,7 +14,7 @@ fluentci run gleam_pipeline
 
 ## Add gleam Pipeline to your project
 
-Run the following command to add gleam pipeline to your project:
+Run the following command to add Gleam pipeline to your project:
 
 ```bash
 fluentci init -t gleam
