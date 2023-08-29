@@ -12,9 +12,9 @@ Run the following command to run the pre-built [PHP pipeline](https://github.com
 fluentci run php_pipeline
 ```
 
-## Add php Pipeline to your project
+## Add PHP Pipeline to your project
 
-Run the following command to add php pipeline to your project:
+Run the following command to add PHP pipeline to your project:
 
 ```bash
 fluentci init -t php

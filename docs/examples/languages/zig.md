@@ -11,7 +11,7 @@ Run the following command to run the pre-built [Zig pipeline](https://github.com
 fluentci run zig_pipeline
 ```
 
-## Add zig Pipeline to your project
+## Add Zig Pipeline to your project
 
 Run the following command to add Zig pipeline to your project:
 

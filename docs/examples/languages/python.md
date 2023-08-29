@@ -12,9 +12,9 @@ Run the following command to run the pre-built [Python pipeline](https://github.
 fluentci run python_pipeline
 ```
 
-## Add python Pipeline to your project
+## Add Python Pipeline to your project
 
-Run the following command to add python pipeline to your project:
+Run the following command to add Python pipeline to your project:
 
 ```bash
 fluentci init -t python
