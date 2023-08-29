@@ -6,7 +6,7 @@ title: Deno
 Run the following command to run the pre-built [Deno Pipeline](https://github.com/fluent-ci-templates/deno-pipeline) in your project to deploy to Deno Deploy:
 
 ```bash
-dagger run fluentci deno_pipeline deploy
+fluentci run deno_pipeline deploy
 ```
 
 ## Environment variables (Deno Deploy)

@@ -8,7 +8,7 @@ title: Laravel
 Run the following command to run the pre-built [Laravel pipeline](https://github.com/fluent-ci-templates/laravel-pipeline) without having to initialize a project:
 
 ```bash
-dagger run fluentci laravel_pipeline
+fluentci run laravel_pipeline
 ```
 
 ## Add Laravel Pipeline to your project

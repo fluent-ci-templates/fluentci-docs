@@ -6,7 +6,7 @@ title: Codecov
 Run the following command to run the pre-built [Codecov Pipeline](https://github.com/fluent-ci-templates/codecov-pipeline) in your project to upload coverage to [Codecov](https://about.codecov.io/) ☂️:
 
 ```bash
-dagger run fluentci codecov_pipeline upload
+fluentci run codecov_pipeline upload
 ```
 
 ## Environment Variables

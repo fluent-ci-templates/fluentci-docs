@@ -7,7 +7,7 @@ title: Heroku
 Run the following command to run the pre-built [Heroku Pipeline](https://github.com/fluent-ci-templates/heroku-pipeline) in your project to deploy your application to [Heroku](https://www.heroku.com):
 
 ```bash
-dagger run fluentci heroku_pipeline deploy
+fluentci run heroku_pipeline deploy
 ```
 
 ## Environment variables

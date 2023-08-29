@@ -8,7 +8,7 @@ title: Deno
 Run the following command to run the pre-built [Deno pipeline](https://github.com/fluent-ci-templates/deno-pipeline) without having to initialize a project:
 
 ```bash
-dagger run fluentci deno_pipeline
+fluentci run deno_pipeline
 ```
 
 ## Add Deno Pipeline to your project

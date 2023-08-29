@@ -8,7 +8,7 @@ title: Zig
 Run the following command to run the pre-built [Zig pipeline](https://github.com/fluent-ci-templates/zig-pipeline) without having to initialize a project:
 
 ```bash
-dagger run fluentci zig_pipeline
+fluentci run zig_pipeline
 ```
 
 ## Add zig Pipeline to your project

@@ -8,7 +8,7 @@ title: Elixir
 Run the following command to run the pre-built [Elixir pipeline](https://github.com/fluent-ci-templates/elixir-pipeline) without having to initialize a project:
 
 ```bash
-dagger run fluentci elixir_pipeline
+fluentci run elixir_pipeline
 ```
 
 ## Add Elixir Pipeline to your project

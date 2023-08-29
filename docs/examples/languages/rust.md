@@ -8,7 +8,7 @@ title: Rust
 Run the following command to run the pre-built [Rust pipeline](https://github.com/fluent-ci-templates/rust-pipeline) without having to initialize a project:
 
 ```bash
-dagger run fluentci rust_pipeline
+fluentci run rust_pipeline
 ```
 
 ## Add Rust Pipeline to your project

@@ -8,7 +8,7 @@ title: Android
 Run the following command to run the pre-built [Android pipeline](https://github.com/fluent-ci-templates/android-pipeline) without having to initialize a project:
 
 ```bash
-dagger run fluentci android_pipeline
+fluentci run android_pipeline
 ```
 
 ## Add Android Pipeline to your project

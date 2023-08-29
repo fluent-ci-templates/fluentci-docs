@@ -8,7 +8,7 @@ title: Ruby
 Run the following command to run the pre-built [Ruby pipeline](https://github.com/fluent-ci-templates/ruby-pipeline) without having to initialize a project:
 
 ```bash
-dagger run fluentci ruby_pipeline
+fluentci run ruby_pipeline
 ```
 
 ## Add Ruby Pipeline to your project

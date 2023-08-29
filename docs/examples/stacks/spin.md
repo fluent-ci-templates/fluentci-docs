@@ -9,7 +9,7 @@ title: Spin
 Run the following command to run the pre-built [Spin pipeline](https://github.com/fluent-ci-templates/spin-pipeline) without having to initialize a project:
 
 ```bash
-dagger run fluentci spin_pipeline
+fluentci run spin_pipeline
 ```
 
 ## Add Spin Pipeline to your project
