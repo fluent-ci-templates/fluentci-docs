@@ -31,7 +31,9 @@ Or simply:
 
 ```bash
 fluentci
-```## Jobs
+```
+
+## Jobs
 
 | Job    | Description         |
 | ------ | ------------------- |
