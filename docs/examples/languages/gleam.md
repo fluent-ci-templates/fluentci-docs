@@ -31,27 +31,31 @@ Or simply:
 
 ```bash
 fluentci
-```
+```## Jobs
 
-## Jobs
-
-| Job   | Description      |
-| ----- | ---------------- |
-| test  | Run your tests   |
+| Job    | Description         |
+| ------ | ------------------- |
+| check  | Run type checking   |
+| format | Format source code  |
+| test   | Run the tests       |
+| build  | Build the project   |
 
 ## Programmatic usage
 
 You can also use this pipeline programmatically:
 
 ```ts
-import Client, { connect } from "https://esm.sh/@dagger.io/dagger@0.8.1";
+import { Client, connect } from "https://esm.sh/@dagger.io/dagger@0.8.1";
 import { Dagger } from "https://pkg.fluentci.io/gleam_pipeline/mod.ts";
 
-const { test } = Dagger;
+const { check, format, test, build } = Dagger;
 
 function pipeline(src = ".") {
   connect(async (client: Client) => {
+    await check(client, src);
+    await format(client, src);
     await test(client, src);
+    await build(client, src);
   });
 }
 
