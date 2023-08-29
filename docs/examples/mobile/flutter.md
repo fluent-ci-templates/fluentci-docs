@@ -13,7 +13,7 @@ fluentci run flutter_pipeline
 
 ## Add Flutter Pipeline to your project
 
-Run the following command to add Android pipeline to your project:
+Run the following command to add Flutter pipeline to your project:
 
 ```bash
 fluentci init -t flutter
