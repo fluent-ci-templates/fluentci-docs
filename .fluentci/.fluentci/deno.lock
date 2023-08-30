@@ -1,0 +1,13 @@
+{
+  "version": "2",
+  "remote": {
+    "https://deno.land/x/fluent_github_actions@v0.1.2/mod.ts": "dc62b622791da77bc27f68e33cba618983a0770a9a12dcc9e0f9a61161bb90e5",
+    "https://deno.land/x/fluent_github_actions@v0.1.2/src/event.ts": "c31430af085682cb4ad522c655a8a0800a3ab8b8aec7c979d60c909051d853b0",
+    "https://deno.land/x/fluent_github_actions@v0.1.2/src/job_spec.ts": "ee7af83e75285b4776ff4f9e14764187737178b4abc6c277da1c32491c41dfca",
+    "https://deno.land/x/fluent_github_actions@v0.1.2/src/step_spec.ts": "3207071b5dee8487f36fe4ea1881e8fd3b77c472c965c20a14093a3c919af9af",
+    "https://deno.land/x/fluent_github_actions@v0.1.2/src/workflow.ts": "488556e230fdeeb3a5b0d0bf548c570606aa356b0a7f667ea1d031d3263eb566",
+    "https://deno.land/x/fluent_github_actions@v0.1.2/src/workflow_spec.ts": "3ca9e565dc1dedd0531e0b852d50b9a3853a1ad35f2010760e0326590b80fa43",
+    "https://esm.sh/v131/yaml@2.3.1/denonext/yaml.mjs": "71f677b4bfc69271af9d98db5194e354f9a1863955e208e26d32a9ef78bd89f5",
+    "https://esm.sh/yaml@v2.3.1": "1fe2490feb3d9c6d2c71c64dbdbed90acd4164b00628b3c68a311b6731ca38b5"
+  }
+}

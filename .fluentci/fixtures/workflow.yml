@@ -4,7 +4,7 @@ name: Deploy
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -21,11 +21,7 @@ jobs:
             sudo mv bin/dagger /usr/local/bin
             dagger version
       - name: Run Dagger Pipelines
-        run: dagger run fluentci . build pages-deploy
+        run: dagger run fluentci cloudflare_pipeline
         env:
-          CF_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CF_ACCOUNT_ID: fe5b1e2ce9f94f4c0415ab94ce402012
-          PROJECT_NAME: fluentci-docs
-          DIRECTORY: build
-          BUN_VERSION: 0.8.1
-          NODE_VERSION: 19.9.0
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
