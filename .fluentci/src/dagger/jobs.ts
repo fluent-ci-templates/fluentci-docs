@@ -11,7 +11,7 @@ export const build = async (client: Client, src = ".") => {
   let ctr = client
     .pipeline(Job.build)
     .container()
-    .from("ghcr.io/fluent-ci-templates/bun:release")
+    .from("ghcr.io/fluent-ci-templates/bun:latest")
     .withMountedCache(
       "/root/.bun/install/cache",
       client.cacheVolume("bun-cache")
@@ -40,7 +40,7 @@ export const deploy = async (client: Client, src = ".") => {
   const ctr = client
     .pipeline(Job.deploy)
     .container()
-    .from("ghcr.io/fluent-ci-templates/bun:release")
+    .from("ghcr.io/fluent-ci-templates/bun:latest")
     .withMountedCache(
       "/root/.bun/install/cache",
       client.cacheVolume("bun-cache")
@@ -80,7 +80,7 @@ export const pagesDeploy = async (client: Client, src = ".") => {
   const ctr = client
     .pipeline(Job.pagesDeploy)
     .container()
-    .from("ghcr.io/fluent-ci-templates/bun:release")
+    .from("ghcr.io/fluent-ci-templates/bun:latest")
     .withMountedCache(
       "/root/.bun/install/cache",
       client.cacheVolume("bun-cache")
