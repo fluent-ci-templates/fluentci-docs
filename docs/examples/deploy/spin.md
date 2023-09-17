@@ -28,10 +28,8 @@ fluentci run spin_pipeline build deploy
 You can also use this pipeline programmatically:
 
 ```typescript
-import { Client, connect } from "https://esm.sh/@dagger.io/dagger@0.8.1";
-import { Dagger } from "https://deno.land/x/spin_pipeline/mod.ts";
-
-const { build, deploy } = Dagger;
+import Client, { connect } from "https://sdk.fluentci.io/v0.1.7/mod.ts";
+import { build, deploy } from "https://pkg.fluentci.io/spin_pipeline@v0.5.0/mod.ts";
 
 function pipeline(src = ".") {
   connect(async (client: Client) => {
@@ -41,3 +39,4 @@ function pipeline(src = ".") {
 }
 
 pipeline();
+```

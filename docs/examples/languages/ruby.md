@@ -46,17 +46,15 @@ dagger run fluentci .
 You can also use this pipeline programmatically:
 
 ```ts
-import Client, { connect } from "https://esm.sh/@dagger.io/dagger@0.8.1";
-import { Dagger } from "https://deno.land/x/ruby_pipeline/mod.ts";
+import Client, { connect } from "https://sdk.fluentci.io/v0.1.7/mod.ts";
+import { rubocop, rails, rspec } from "https://pkg.fluentci.io/ruby_pipeline@v0.6.3/mod.ts";
 
-const { rubocop, rails, rspec, herokuDeploy } = Dagger;
 
 function pipeline(src = ".") {
   connect(async (client: Client) => {
     await rubocop(client, src);
     await rails(client, src);
     await rspec(client, src);
-    await herokuDeploy(client, src);
   });
 }
 

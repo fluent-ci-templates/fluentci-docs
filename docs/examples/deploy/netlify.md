@@ -12,9 +12,11 @@ fluentci run netlify_pipeline deploy
 
 ## Environment variables
 
-| Variable           | Description               |
-| -------------------| --------------------------|
-| NETLIFY_AUTH_TOKEN | Your Netlify Access Token |
+| Variable           | Description                             |
+| -------------------| ----------------------------------------|
+| NETLIFY_AUTH_TOKEN | Your Netlify Access Token               |
+| NETLIFY_SITE_ID    | Your Netlify Site ID                    |
+| NETLIFY_SITE_DIR   | Your directory to deploy (default: `.`) |
 
 ## Jobs
 
@@ -27,13 +29,12 @@ fluentci run netlify_pipeline deploy
 You can also use this pipeline programmatically:
 
 ```typescript
-import { Client, connect } from "https://esm.sh/@dagger.io/dagger@0.8.1";
-import { Dagger } from "https://deno.land/x/netlify_pipeline/mod.ts";
-
-const { deploy } = Dagger;
+import Client, { connect } from "https://sdk.fluentci.io/v0.1.7/mod.ts";
+import { build, deploy } from "https://pkg.fluentci.io/netlify_pipeline@v0.5.2/mod.ts";
 
 function pipeline(src = ".") {
   connect(async (client: Client) => {
+    await build(client, src);
     await deploy(client, src);
   });
 }

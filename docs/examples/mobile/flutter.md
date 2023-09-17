@@ -52,10 +52,8 @@ fluentci
 You can also use this pipeline programmatically:
 
 ```ts
-import { Client, connect } from "https://esm.sh/@dagger.io/dagger@0.8.1";
-import { Dagger } from "https://pkg.fluentci.io/flutter_pipeline/mod.ts";
-
-const { codeQuality, test, build } = Dagger;
+import Client, { connect } from "https://sdk.fluentci.io/v0.1.7/mod.ts";
+import { codeQuality, test, build } from "https://pkg.fluentci.io/flutter_pipeline@v0.4.0/mod.ts";
 
 function pipeline(src = ".") {
   connect(async (client: Client) => {

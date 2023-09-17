@@ -27,10 +27,8 @@ fluentci run railway_pipeline deploy
 You can also use this pipeline programmatically:
 
 ```typescript
-import { Client, connect } from "https://esm.sh/@dagger.io/dagger@0.8.1";
-import { Dagger } from "https://deno.land/x/railway_pipeline/mod.ts";
-
-const { deploy } = Dagger;
+import Client, { connect } from "https://sdk.fluentci.io/v0.1.7/mod.ts";
+import { deploy } from "https://pkg.fluentci.io/railway_pipeline@v0.5.0/mod.ts";
 
 function pipeline(src = ".") {
   connect(async (client: Client) => {
@@ -39,5 +37,4 @@ function pipeline(src = ".") {
 }
 
 pipeline();
-
 ```

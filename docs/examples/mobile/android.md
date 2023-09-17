@@ -42,10 +42,9 @@ dagger run fluentci .
 You can also use this pipeline programmatically:
 
 ```ts
-import { Client, connect } from "https://esm.sh/@dagger.io/dagger@0.8.1";
-import { Dagger } from "https://pkg.fluentci.io/android_pipeline/mod.ts";
+import Client, { connect } from "https://sdk.fluentci.io/v0.1.7/mod.ts";
+import { lintDebug, assembleDebug, debugTests } from "https://pkg.fluentci.io/android_pipeline@v0.6.0/mod.ts";
 
-const { lintDebug, assembleDebug, debugTests } = Dagger;
 
 function pipeline(src = ".") {
   connect(async (client: Client) => {
