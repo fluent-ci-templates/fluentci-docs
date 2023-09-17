@@ -8,7 +8,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const config = {
   title: "Fluent CI/CD",
   tagline: "CI/CD Pipeline as Code",
-  favicon: "img/logo.png",
+  favicon: "img/fluentci-logo.png",
 
   // Set the production url of your site here
   url: "https://your-docusaurus-test-site.com",
@@ -66,7 +66,7 @@ const config = {
         title: "Fluent CI",
         logo: {
           alt: "Fluent CI Logo",
-          src: "img/logo.png",
+          src: "img/fluentci-logo.png",
         },
         items: [
           {
