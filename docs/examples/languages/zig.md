@@ -23,7 +23,7 @@ This will create a `.fluentci` directory in your project, feel free to customize
 You can then run the following command to start the pipeline:
 
 ```bash
-dagger run fluentci .
+fluentci run .
 ```
 ## Environment variables
 
