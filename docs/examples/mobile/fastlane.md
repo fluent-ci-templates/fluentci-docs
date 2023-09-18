@@ -11,7 +11,7 @@ Run the following command to run the pre-built [Fastlane pipeline](https://githu
 fluentci run fastlane_pipeline
 ```
 
-## Add Flutter Pipeline to your project
+## Add Fastlane Pipeline to your project
 
 Run the following command to add Fastlane pipeline to your project:
 
