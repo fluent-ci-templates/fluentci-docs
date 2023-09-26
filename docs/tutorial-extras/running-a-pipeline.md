@@ -7,7 +7,7 @@ sidebar_position: 3
 Once you have configured your pipeline, you can run it using the `dagger run` command:
 
 ```bash
-fluentci run .
+dagger run fluentci run .
 ```
 
 Or just:
