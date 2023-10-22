@@ -39,15 +39,8 @@ fluentci run .
 You can also use this pipeline programmatically:
 
 ```ts
-import Client, { connect } from "https://sdk.fluentci.io/v0.1.7/mod.ts";
-import { build, test } from "https://pkg.fluentci.io/rust_pipeline@v0.5.0/mod.ts";
+import { build, test } from "https://pkg.fluentci.io/rust_pipeline@v0.6.0/mod.ts";
 
-function pipeline(src = ".") {
-  connect(async (client: Client) => {
-    await test(client, src);
-    await build(client, src);
-  });
-}
-
-pipeline();
+await test();
+await build();
 ```

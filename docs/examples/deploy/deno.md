@@ -24,16 +24,9 @@ fluentci run deno_pipeline deploy
 You can also use this pipeline programmatically:
 
 ```ts
-import Client, { connect } from "https://sdk.fluentci.io/v0.1.7/mod.ts";
 import { fmt, lint, test } from "https://deno.land/x/deno_pipeline/mod.ts";
 
-function pipeline(src = ".") {
-  connect(async (client: Client) => {
-    await fmt(client, src);
-    await lint(client, src);
-    await test(client, src);
-  });
-}
-
-pipeline();
+await fmt(client, src);
+await lint(client, src);
+await test(client, src);
 ```

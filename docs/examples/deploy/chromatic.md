@@ -28,15 +28,7 @@ fluentci run chromatic_pipeline publish
 You can also use this pipeline programmatically:
 
 ```typescript
-import Client, { connect } from "https://sdk.fluentci.io/v0.1.7/mod.ts";
-import { publish } from "https://pkg.fluentci.io/chromatic_pipeline@v0.5.0/mod.ts";
+import { publish } from "https://pkg.fluentci.io/chromatic_pipeline@v0.6.0/mod.ts";
 
-function pipeline(src = ".") {
-  connect(async (client: Client) => {
-    await publish(client, src);
-  });
-}
-
-pipeline();
-
+await publish(client, src);
 ```

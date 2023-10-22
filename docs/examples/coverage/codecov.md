@@ -27,15 +27,7 @@ fluentci run codecov_pipeline upload
 You can also use this pipeline programmatically:
 
 ```typescript
-import { Client, connect } from "https://sdk.fluentci.io/v0.1.7/mod.ts";
 import { upload } from "https://deno.land/x/codecov_pipeline/mod.ts";
 
-function pipeline(src = ".") {
-  connect(async (client: Client) => {
-    await upload(client, src);
-  });
-}
-
-pipeline();
-
+await upload();
 ```

@@ -46,17 +46,9 @@ fluentci run .
 You can also use this pipeline programmatically:
 
 ```ts
-import Client, { connect } from "https://sdk.fluentci.io/v0.1.7/mod.ts";
-import { rubocop, rails, rspec } from "https://pkg.fluentci.io/ruby_pipeline@v0.6.3/mod.ts";
+import { rubocop, rails, rspec } from "https://pkg.fluentci.io/ruby_pipeline@v0.7.0/mod.ts";
 
-
-function pipeline(src = ".") {
-  connect(async (client: Client) => {
-    await rubocop(client, src);
-    await rails(client, src);
-    await rspec(client, src);
-  });
-}
-
-pipeline();
+await rubocop();
+await rails();
+await rspec();
 ```
