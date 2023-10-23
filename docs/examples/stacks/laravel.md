@@ -51,7 +51,7 @@ import { test } from "https://pkg.fluentci.io/laravel_pipeline@v0.5.0/mod.ts";
 
 function pipeline(src = ".") {
   connect(async (client: Client) => {
-    await test(client, src);
+    await test();
   });
 }
 

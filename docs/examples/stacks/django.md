@@ -43,7 +43,7 @@ import { djangoTests } from "https://pkg.fluentci.io/django_pipeline@v0.5.0/mod.
 
 function pipeline(src = ".") {
   connect(async (client: Client) => {
-    await djangoTests(client, src);
+    await djangoTests();
   });
 }
 

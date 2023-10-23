@@ -59,14 +59,14 @@ import {
 
 function pipeline(src = ".") {
   connect(async (client: Client) => {
-    await phpcs(client, src);
-    await phpstan(client, src);
-    await twigLint(client, src);
-    await xliffLint(client, src);
-    await yamlLint(client, src);
-    await doctrineLint(client, src);
-    await containerLint(client, src);
-    await phpUnit(client, src);
+    await phpcs();
+    await phpstan();
+    await twigLint();
+    await xliffLint();
+    await yamlLint();
+    await doctrineLint();
+    await containerLint();
+    await phpUnit();
   });
 }
 

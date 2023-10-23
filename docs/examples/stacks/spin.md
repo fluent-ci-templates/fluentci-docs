@@ -51,8 +51,8 @@ import { build, deploy } from "https://pkg.fluentci.io/spin_pipeline@v0.5.0/mod.
 
 function pipeline(src = ".") {
   connect(async (client: Client) => {
-    await build(client, src);
-    await deploy(client, src);
+    await build();
+    await deploy();
   });
 }
 
