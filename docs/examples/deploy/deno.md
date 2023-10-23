@@ -26,7 +26,7 @@ You can also use this pipeline programmatically:
 ```ts
 import { fmt, lint, test } from "https://deno.land/x/deno_pipeline/mod.ts";
 
-await fmt(client, src);
-await lint(client, src);
-await test(client, src);
+await fmt();
+await lint();
+await test();
 ```
