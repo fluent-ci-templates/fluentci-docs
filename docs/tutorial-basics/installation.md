@@ -29,3 +29,10 @@ You can also install fluentci using [Homebrew](https://brew.sh/):
 ```bash
 brew install fluentci-io/tap/cli
 ```
+
+### Pkgx
+
+You can also install fluentci using [pkgx](https://pkgx.sh):
+```bash
+pkgx install fluentci
+```
