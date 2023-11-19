@@ -8,7 +8,7 @@ title: Installing FluentCI
 ### What you'll need
 
 - [Deno](https://deno.land/) version 1.37 or above
-- [Dagger](https://dagger.io/) version >= 0.8.4 < 0.9.0
+- [Dagger](https://dagger.io/) version >= 0.9.0
  
 
 ### Install
