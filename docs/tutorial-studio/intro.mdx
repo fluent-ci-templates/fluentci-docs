@@ -1,0 +1,70 @@
+---
+title: Quick Start
+sidebar_position: 1
+---
+
+FluentCI Studio is the easiest way to explore and manipulate your CI Pipelines in all of your FluentCI projects.
+
+Run the following command to start FluentCI Studio on your local machine:
+
+```bash
+fluentci studio
+```
+
+<br />
+
+import studio from "./img/studio.png";
+
+<div style={{ border: "1px solid rgba(255, 255, 255, 0.2)" }}>
+  <img src={studio} />
+</div>
+
+### Pipeline Status
+
+A visual indication of your pipeline's current status. This icon is based on the latest build on your default branch.
+
+import status from "./img/status.png";
+
+<div style={{ border: "1px solid rgba(255, 255, 255, 0.2)" }}>
+  <img src={status} />
+</div>
+
+### Build history
+
+The build history visualizes the last 18 builds that have been run on your default branch. The height of each bar reflects the build's running time, and its status is represented by its color.
+
+import history from "./img/history.png";
+
+<div style={{ border: "1px solid rgba(255, 255, 255, 0.2)" }}>
+  <img src={history} />
+</div>
+
+### Speed
+
+The speed of your pipeline is calculated from the average of your 18 most recent builds. This helps you keep an eye on your pipeline's speed, and compare performance between pipelines.
+
+import speed from "./img/speed.png";
+
+<div style={{ border: "1px solid rgba(255, 255, 255, 0.2)" }}>
+  <img src={speed} />
+</div>
+
+### Reliability
+
+The reliability of your pipeline is a calculation based on passing vs failing builds over the last 18 builds. This metric helps you to understand the overall stability of your pipelines.
+
+import reliability from "./img/reliability.png";
+
+<div style={{ border: "1px solid rgba(255, 255, 255, 0.2)" }}>
+  <img src={reliability} />
+</div>
+
+### Builds per week
+
+The builds per week measurement is calculated based on the average number of builds created over the past 4 weeks. This metric helps you to understand how frequently a pipeline is run.
+
+import buildsPerWeek from "./img/builds-per-week.png";
+
+<div style={{ border: "1px solid rgba(255, 255, 255, 0.2)" }}>
+  <img src={buildsPerWeek} />
+</div>

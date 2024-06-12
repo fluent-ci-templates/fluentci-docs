@@ -37,7 +37,7 @@ curl -fsSL https://cli.fluentci.io | bash
 You can also install fluentci using [Homebrew](https://brew.sh/):
 
 ```bash
-brew install fluentci-io/tap/cli
+brew install fluentci-io/tap/fluentci
 ```
 
 ### Pkgx

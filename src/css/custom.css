@@ -23,6 +23,7 @@
   --ifm-color-primary-lighter: #24ffb5;
   --ifm-color-primary-lightest: #24ffb5;
   --ifm-code-font-size: 95%;
+  --ifm-menu-color-background-hover: #24ffb610;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
@@ -38,6 +39,9 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
   --ifm-navbar-background-color: #0f0124;
   --ifm-background-color: #0f0124 !important;
+  --ifm-toc-border-color: #44495085 !important;
+  --ifm-color-emphasis-200: #44495085 !important;
+  --ifm-color-emphasis-300: #444950a5 !important;
   --ifm-card-background-color: #0f0124;
 }
 
@@ -124,4 +128,17 @@ html[data-theme='dark'] .footer {
 
 .markdown li > p {
   line-height: 24px;
+}
+
+
+pre {
+  background-color: initial !important;
+}
+
+.menu__caret:hover {
+  background: initial !important;
+}
+
+.menu__link--active:not(.menu__link--sublist) {
+  background-color: #1d503f78;
 }
