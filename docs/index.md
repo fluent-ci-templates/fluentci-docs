@@ -34,4 +34,4 @@ All Fluent CI pipelines are written in Typescript ([Deno](https://deno.com/)) / 
 And all pipelines will be executed :
 
 - by [Dagger](https://dagger.io/) in a Docker container, you can easily run them locally or on a server, any platform that supports Docker.
-- Or by [FluentCI Engine](https://github.com/fluentci-io/fluentci-engine) in a isolated environment directly on your host machine (thanks to Nix, Pkgx, Mise, etc.), for Wasm based Pipelines.
+- Or by [FluentCI Engine](https://github.com/fluentci-io/fluentci-engine) in a isolated environment directly on your host machine (thanks to Nix, Pkgx, Flox, Devbox, Devenv, Mise, etc.), for Wasm based Pipelines.
