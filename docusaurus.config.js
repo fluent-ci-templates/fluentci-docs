@@ -41,8 +41,7 @@ const config = {
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/fluent-ci-templates/fluentci-docs/tree/master",
+          editUrl: "https://github.com/fluentci-io/fluentci-docs/tree/master",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
@@ -114,7 +113,7 @@ const config = {
             items: [
               {
                 label: "GitHub",
-                href: "https://github.com/fluent-ci-templates",
+                href: "https://github.com/fluentci-io",
               },
             ],
           },
