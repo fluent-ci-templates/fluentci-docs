@@ -15,30 +15,30 @@
   --ifm-font-family-monospace: Inconsolata, monospace;
   --ifm-heading-font-family: Lexend, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   --ifm-heading-font-weight: 600;
-  --ifm-color-primary: #460cf1;
-  --ifm-color-primary-dark: #460cf1;
-  --ifm-color-primary-darker: #460cf1;
-  --ifm-color-primary-darkest: #460cf1;
-  --ifm-color-primary-light: #460cf1;
-  --ifm-color-primary-lighter: #460cf1;
-  --ifm-color-primary-lightest: #460cf1;
+  --ifm-color-primary: #24ffb5;
+  --ifm-color-primary-dark: #24ffb5;
+  --ifm-color-primary-darker: #24ffb5;
+  --ifm-color-primary-darkest: #24ffb5;
+  --ifm-color-primary-light: #24ffb5;
+  --ifm-color-primary-lighter: #24ffb5;
+  --ifm-color-primary-lightest: #24ffb5;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #460cf1;
-  --ifm-color-primary-dark: #460cf1;
-  --ifm-color-primary-darker: #460cf1;
-  --ifm-color-primary-darkest: #460cf1;
-  --ifm-color-primary-light: #460cf1;
-  --ifm-color-primary-lighter: #460cf1;
-  --ifm-color-primary-lightest: #460cf1;
+  --ifm-color-primary: #24ffb5;
+  --ifm-color-primary-dark: #24ffb5;
+  --ifm-color-primary-darker: #24ffb5;
+  --ifm-color-primary-darkest: #24ffb5;
+  --ifm-color-primary-light: #24ffb5;
+  --ifm-color-primary-lighter: #24ffb5;
+  --ifm-color-primary-lightest: #24ffb5;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
-  --ifm-navbar-background-color: #0b002b;
-  --ifm-background-color: #0b002b !important;
-  --ifm-card-background-color: #0b002b;
+  --ifm-navbar-background-color: #0f0124;
+  --ifm-background-color: #0f0124 !important;
+  --ifm-card-background-color: #0f0124;
 }
 
 html[data-theme='dark'] .prism-code {
@@ -110,11 +110,11 @@ html[data-theme='dark'] .header-github-link:before {
 }
 
 .footer {
-  background-color: #0b002b;
+  background-color: #0f0124;
 }
 
 html[data-theme='dark'] .footer {
-  background-color: #0b002b;
+  background-color: #0f0124;
 }
 
 .markdown > p {

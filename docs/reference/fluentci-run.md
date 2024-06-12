@@ -1,9 +1,9 @@
 ---
-sidebar_position: 10
+sidebar_position: 13
 title: fluentci run
 ---
 
-Run pipeline using [Dagger](https://dagger.io/) and pre-built pipelines from the [Fluent CI](https://fluentci.io/), a collection of pre-built pipelines for common CI/CD workflows written in TypeScript (you don't need to run `fluentci init`).
+Run a local or a plugin from [FluentCI](https://fluentci.io/) registry, a collection of pre-built pipelines for common CI/CD workflows written in TypeScript/Rust (you don't need to run `fluentci init`).
 
 ```bash
 fluentci run <pipeline> [jobs...] [options]
@@ -21,6 +21,9 @@ fluentci run .
 | ---------------- | --------------------------------- |
 | `--help`, `-h`   | help for fluentci                 |
 | `--reload`, `-r` | Reload the pippeline source cache |
+| `--wasm`         | Run the Wasm Plugin if available  |
+| `--remote-exec`  | Run the pipeline remotely, requires FLUENTCI_PROJECT_ID and FLUENTCI_ACCESS_TOKEN |
+| `--work-dir`    | Set the working directory for the pipeline |
 
 ### List of pre-built pipelines
 

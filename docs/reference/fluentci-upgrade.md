@@ -1,9 +1,9 @@
 ---
-sidebar_position: 12
+sidebar_position: 17
 title: fluentci upgrade
 ---
 
-Upgrade the Fluent CI CLI to the latest version.
+Upgrade Fluent CI CLI to the latest version.
 
 ```bash
 fluentci upgrade

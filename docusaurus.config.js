@@ -11,7 +11,7 @@ const config = {
   favicon: "img/fluentci-logo.png",
 
   // Set the production url of your site here
-  url: "https://your-docusaurus-test-site.com",
+  url: "https://docs.fluentci.io",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
@@ -57,7 +57,7 @@ const config = {
     ({
       colorMode: {
         defaultMode: "dark",
-        disableSwitch: false,
+        disableSwitch: true,
         respectPrefersColorScheme: false,
       },
       // Replace with your project's social card
@@ -70,7 +70,7 @@ const config = {
         },
         items: [
           {
-            href: "https://github.com/fluent-ci-templates",
+            href: "https://github.com/fluentci-io",
             className: "header-github-link",
             position: "right",
           },
