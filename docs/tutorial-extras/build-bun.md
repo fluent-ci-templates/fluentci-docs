@@ -14,7 +14,7 @@ The instructions on this page assume that you are familiar with `Bun`. In additi
 
 ## Using the Bun Plugin
 
-You can use FluentCI to build Bun applications using [bun plugin](https://github.com/fluent-ci-templates/bun-pipeline), no need to install Bun your machine, FluentCI will handle everything for you.
+You can use FluentCI to build Bun applications using [bun plugin](https://github.com/fluent-ci-templates/bun-pipeline), no need to install Bun on your machine, FluentCI will handle everything for you.
 
 The following commands can be used to build and test Bun applications:
 
