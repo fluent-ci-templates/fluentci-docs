@@ -31,7 +31,7 @@ Fluent CI is a great choice for your CI/CD needs because it is:
 
 All Fluent CI pipelines are written in Typescript ([Deno](https://deno.com/)) / [Rust](https://www.rust-lang.org/). This means you can easily read and understand them. You can also easily modify them to meet your specific needs. This makes Fluent CI a great choice for your CI/CD needs.
 
-And all pipelines will be executed by [Dagger](https://dagger.io/) in :
+And all pipelines will be executed :
 
-- a Docker container, you can easily run them locally or on a server, any platform that supports Docker.
-- Or in a isolated environment directly on your host machine (thanks to Nix, Pkgx, Mise, etc.), for Wasm based Pipelines.
+- by [Dagger](https://dagger.io/) in a Docker container, you can easily run them locally or on a server, any platform that supports Docker.
+- Or by [FluentCI Engine](https://github.com/fluentci-io/fluentci-engine) in a isolated environment directly on your host machine (thanks to Nix, Pkgx, Mise, etc.), for Wasm based Pipelines.
