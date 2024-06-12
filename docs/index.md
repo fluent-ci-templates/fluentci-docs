@@ -19,7 +19,7 @@ Fluent CI is a great choice for your CI/CD needs because it is:
 
 - **Local first**: you can start using Fluent CI locally on your machine, and then export your pipelines to your CI Provider (Github Actions, Gitlab CI, Azure Pipelines, AWS CodePipeline, etc.) when you are ready.
 
-- **Web-based UI**: you can easily set up and manage your pipelines using a web-based UI ([FluentCI Studio](/category/fluentci-studio/intro)).
+- **Web-based UI**: you can easily set up and manage your pipelines using a web-based UI ([FluentCI Studio](/fluentci-studio/intro)).
   
 - **Consistent**: designed to be consistent across all platforms, you can run the same pipeline locally and on your CI Provider without any changes.
 
