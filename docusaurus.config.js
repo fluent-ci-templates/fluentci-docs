@@ -125,6 +125,15 @@ const config = {
         darkTheme: themes.dracula,
         additionalLanguages: ["bash", "typescript", "rust", "json", "yaml"],
       },
+      algolia: {
+        // The application ID provided by Algolia
+        appId: "FW3C08PP3C",
+
+        // Public API key: it is safe to commit it
+        apiKey: "610f5e056e9610aad01bfadb1abec858",
+
+        indexName: "fluentci",
+      },
     }),
 };
 
