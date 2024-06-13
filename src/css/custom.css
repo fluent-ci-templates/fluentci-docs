@@ -43,6 +43,7 @@
   --ifm-color-emphasis-200: #44495085 !important;
   --ifm-color-emphasis-300: #444950a5 !important;
   --ifm-card-background-color: #0f0124;
+  --docsearch-hit-active-color: #0f0124 !important;
 }
 
 html[data-theme='dark'] .prism-code {
