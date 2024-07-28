@@ -27,7 +27,7 @@ fluentci run fly_pipeline deploy
 You can also use this pipeline programmatically:
 
 ```typescript
-import { deploy } from "https://pkg.fluentci.io/fly_pipeline@v0.5.1/mod.ts";
+import { deploy } from "jsr:@fluentci/fly";
 
 await deploy();
 ```

@@ -50,7 +50,7 @@ fluentci
 You can also use this pipeline programmatically:
 
 ```ts
-import { test } from "https://pkg.fluentci.io/python_pipeline@v0.4.0/mod.ts";
+import { test } from "jsr:@fluentci/python";
 
 await test();
 ```

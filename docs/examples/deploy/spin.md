@@ -28,7 +28,7 @@ fluentci run spin_pipeline build deploy
 You can also use this pipeline programmatically:
 
 ```typescript
-import { build, deploy } from "https://pkg.fluentci.io/spin_pipeline@v0.6.0/mod.ts";
+import { build, deploy } from "jsr:@fluentci/spin";
 
 await build();
 await deploy();

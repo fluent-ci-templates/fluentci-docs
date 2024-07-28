@@ -39,7 +39,7 @@ fluentci run .
 You can also use this pipeline programmatically:
 
 ```ts
-import { fmt, test, build } from "https://pkg.fluentci.io/go_pipeline@v0.6.0/mod.ts";
+import { fmt, test, build } from "jsr:@fluentci/go";
 
 await fmt();
 await test();

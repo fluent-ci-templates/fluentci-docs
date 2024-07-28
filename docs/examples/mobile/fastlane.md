@@ -37,7 +37,7 @@ fluentci run .
 You can also use this pipeline programmatically:
 
 ```ts
-import { execLane } from "https://pkg.fluentci.io/fastlane_pipeline@v0.7.0/mod.ts";
+import { execLane } from "jsr:@fluentci/fastlane";
 
 await execLane("buildRelease");
 ```

@@ -29,7 +29,7 @@ fluentci run netlify_pipeline deploy
 You can also use this pipeline programmatically:
 
 ```typescript
-import { build, deploy } from "https://pkg.fluentci.io/netlify_pipeline@v0.6.0/mod.ts";
+import { build, deploy } from "jsr:@fluentci/netlify";
 
 await build();
 await deploy();

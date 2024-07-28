@@ -52,8 +52,7 @@ fluentci
 You can also use this pipeline programmatically:
 
 ```ts
-import Client, { connect } from "https://sdk.fluentci.io/v0.1.7/mod.ts";
-import { codeQuality, test, build } from "https://pkg.fluentci.io/flutter_pipeline@v0.5.0/mod.ts";
+import { codeQuality, test, build } from "jsr:@fluentci/flutter";
 
 await codeQuality();
 await test();

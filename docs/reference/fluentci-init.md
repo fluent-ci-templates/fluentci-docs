@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 8
 title: fluentci init
 ---
 
@@ -15,6 +15,8 @@ fluentci init [pipeline] [options]
 | ------ | ----------- |
 | `--help`, `-h` | help for init |
 | `--template`, `-t` | The name of the pipeline template to use. |
+| `--standalone`, `-s` | Initialize pipeline as a standalone project, so it can be published and reused in other projects. |
+| `--wasm`, `-w` | Initialize pipeline as a WebAssembly plugin. |
 
 ### List of pre-built pipelines
 

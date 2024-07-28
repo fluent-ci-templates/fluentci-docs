@@ -24,7 +24,7 @@ fluentci run deno_pipeline deploy
 You can also use this pipeline programmatically:
 
 ```ts
-import { fmt, lint, test } from "https://deno.land/x/deno_pipeline/mod.ts";
+import { fmt, lint, test } from "jsr:@fluentci/deno";
 
 await fmt();
 await lint();

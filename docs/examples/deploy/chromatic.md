@@ -28,7 +28,7 @@ fluentci run chromatic_pipeline publish
 You can also use this pipeline programmatically:
 
 ```typescript
-import { publish } from "https://pkg.fluentci.io/chromatic_pipeline@v0.6.0/mod.ts";
+import { publish } from "jsr:@fluentci/chromatic";
 
 await publish();
 ```

@@ -27,7 +27,7 @@ fluentci run railway_pipeline deploy
 You can also use this pipeline programmatically:
 
 ```typescript
-import { deploy } from "https://pkg.fluentci.io/railway_pipeline@v0.6.0/mod.ts";
+import { deploy } from "jsr:@fluentci/railway";
 
 await deploy();
 ```

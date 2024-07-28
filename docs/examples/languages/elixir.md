@@ -37,7 +37,7 @@ fluentci run .
 You can also use this pipeline programmatically:
 
 ```ts
-import { test } from "https://pkg.fluentci.io/elixir_pipeline@v0.6.0/mod.ts";
+import { test } from "jsr:@fluentci/elixir";
 
 await test();
 ```

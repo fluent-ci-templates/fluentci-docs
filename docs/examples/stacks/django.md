@@ -38,14 +38,7 @@ fluentci run .
 You can also use this pipeline programmatically:
 
 ```ts
-import Client, { connect } from "https://sdk.fluentci.io/v0.1.7/mod.ts";
-import { djangoTests } from "https://pkg.fluentci.io/django_pipeline@v0.5.0/mod.ts";
+import { djangoTests } from "jsr:@fluentci/django";
 
-function pipeline(src = ".") {
-  connect(async (client: Client) => {
-    await djangoTests();
-  });
-}
-
-pipeline();
+await djangoTests();
 ```

@@ -38,7 +38,7 @@ fluentci run .
 You can also use this pipeline programmatically:
 
 ```ts
-import { test, uberjar } from "https://pkg.fluentci.io/clojure_pipeline@v0.4.0/mod.ts";
+import { test, uberjar } from "jsr:@fluentci/clojure";
 
 await test();
 await uberjar();

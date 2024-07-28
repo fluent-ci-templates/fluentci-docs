@@ -45,7 +45,6 @@ fluentci run .
 You can also use this pipeline programmatically:
 
 ```ts
-import Client, { connect } from "https://sdk.fluentci.io/v0.1.7/mod.ts";
 import { 
   phpcs,
   phpstan,
@@ -55,20 +54,15 @@ import {
   doctrineLint,
   containerLint,
   phpUnit,
- } from "https://pkg.fluentci.io/symfony_pipeline@v0.5.1/mod.ts";
+ } from "jsr:@fluentci/symfony";
 
-function pipeline(src = ".") {
-  connect(async (client: Client) => {
-    await phpcs();
-    await phpstan();
-    await twigLint();
-    await xliffLint();
-    await yamlLint();
-    await doctrineLint();
-    await containerLint();
-    await phpUnit();
-  });
-}
+await phpcs();
+await phpstan();
+await twigLint();
+await xliffLint();
+await yamlLint();
+await doctrineLint();
+await containerLint();
+await phpUnit();
 
-pipeline();
 ```

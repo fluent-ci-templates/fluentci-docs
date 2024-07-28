@@ -46,15 +46,8 @@ fluentci run .
 You can also use this pipeline programmatically:
 
 ```typescript
-import Client, { connect } from "https://sdk.fluentci.io/v0.1.7/mod.ts";
-import { build, deploy } from "https://pkg.fluentci.io/spin_pipeline@v0.5.0/mod.ts";
+import { build, deploy } from "jsr:@fluentci/spin";
 
-function pipeline(src = ".") {
-  connect(async (client: Client) => {
-    await build();
-    await deploy();
-  });
-}
-
-pipeline();
+await build();
+await deploy();
 ```
