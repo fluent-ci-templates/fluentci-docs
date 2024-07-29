@@ -143,3 +143,7 @@ pre {
 .menu__link--active:not(.menu__link--sublist) {
   background-color: #1d503f78;
 }
+
+.token.atrule, .token.attr-value, .token.keyword {
+  color: #14ffeb;
+}

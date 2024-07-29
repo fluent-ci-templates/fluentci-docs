@@ -1,0 +1,177 @@
+---
+sidebar_position: 5
+---
+
+# Build and test Gleam applications
+
+This page explains how to build and test Gleam applications with FluentCI.
+
+## Before you begin
+
+The instructions on this page assume that you are familiar with `Gleam`. In addition:
+
+- Be familiar with creating Gleam-based applications.
+- Have your Gleam project ready.
+
+## Using the Gleam Plugin
+
+You can use FluentCI to build and test Gleam applications using the [gleam plugin](https://github.com/fluent-ci-templates/gleam-pipeline), no need to install Gleam on your machine, FluentCI will handle everything for you.
+
+The following commands can be used to build and test Gleam applications:
+
+```bash
+fluentci run --wasm gleam test
+fluentci run --wasm gleam build
+```
+
+## CI/CD pipeline integrations
+
+The following examples show how to integrate FluentCI with popular CI providers to build and test Gleam applications:
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+
+<Tabs>
+  <TabItem value="gha" label="Github Actions">
+    <CodeBlock language="yaml" title="ci.yml">
+      {`name: ci
+on:
+  push:
+    branches:
+      - main
+jobs:
+  tasks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Fluent CI
+        uses: fluentci-io/setup-fluentci@v5
+      - name: check
+        run: fluentci run --wasm gleam check
+      - name: format
+        run: fluentci run --wasm gleam format
+      - name: test
+        run: fluentci run --wasm gleam test
+      - name: build
+        run: fluentci run --wasm gleam build
+`}
+    </CodeBlock>
+  </TabItem>
+  <TabItem value="gitlab" label="GitLab CI">
+    <CodeBlock language="yaml" title=".gitlab-ci.yml">
+      {`.docker:
+  image: denoland/deno:debian-1.42.4
+  services:
+    - docker:\${DOCKER_VERSION}-dind
+  variables:
+    DOCKER_HOST: tcp://docker:2376
+    DOCKER_TLS_VERIFY: "1"
+    DOCKER_TLS_CERTDIR: /certs
+    DOCKER_CERT_PATH: /certs/client
+    DOCKER_DRIVER: overlay2
+    DOCKER_VERSION: 20.10.16
+    GITLAB_ACCESS_TOKEN: $GITLAB_ACCESS_TOKEN
+.fluentci:
+  extends: .docker
+  before_script:
+    - apt-get update
+    - apt-get install -y curl tar gzip ca-certificates openssl git unzip libncursesw6
+    - deno install -A -r https://cli.fluentci.io -n fluentci
+    - fluentci --version
+    - curl -L https://dl.dagger.io/dagger/install.sh | DAGGER_VERSION=0.12.3 sh
+    - mv bin/dagger /usr/local/bin
+    - dagger version
+check:
+  extends: .fluentci
+  script:
+    - fluentci run --wasm gleam check
+format:
+  extends: .fluentci
+  script:
+    - fluentci run --wasm gleam format
+test:
+  extends: .fluentci
+  script:
+    - fluentci run --wasm gleam test
+build:
+  extends: .fluentci
+  script:
+    - fluentci run --wasm gleam build
+`}
+
+</CodeBlock>
+</TabItem>
+<TabItem value="circleci" label="Circle CI">
+<CodeBlock language="yaml" title=".circleci/config.yml">
+{`version: 2.1
+jobs:
+  job:
+    steps:
+      - checkout
+      - run: |
+          sudo apt-get update && sudo apt-get install -y curl unzip
+          curl -fsSL https://cli.fluentci.io | bash
+          fluentci --version
+        name: Setup FluentCI
+      - run: fluentci run --wasm gleam check
+        name: check
+      - run: fluentci run --wasm gleam format
+        name: format
+      - run: fluentci run --wasm gleam test
+        name: test
+      - run: fluentci run --wasm gleam build
+        name: build
+    machine:
+      image: ubuntu-2004:2023.07.1
+workflows:
+  fluentci:
+    jobs:
+      - job
+`}
+</CodeBlock>
+</TabItem>
+<TabItem value="azure" label="Azure Pipelines">
+<CodeBlock language="yaml" title="azure-pipelines.yml">
+{`trigger:
+  - main
+pool:
+  vmImage: ubuntu-latest
+steps:
+  - script: |
+      curl -fsSL https://cli.fluentci.io | bash
+      fluentci --version
+      echo "##vso[task.prependpath]\${HOME}/.deno/bin
+    displayName: Setup FluentCI
+  - script: fluentci run --wasm gleam check
+    displayName: check
+  - script: fluentci run --wasm gleam format
+    displayName: format
+  - script: fluentci run --wasm gleam test
+    displayName: test
+  - script: fluentci run --wasm gleam build
+    displayName: build
+  `}
+</CodeBlock>
+</TabItem>
+<TabItem value="aws" label="AWS CodePipeline">
+<CodeBlock language="yaml" title="buildspec.yml">
+{`version: 0.2
+phases:
+  install:
+    commands:
+      - curl -fsSL https://cli.fluentci.io | bash
+      - fluentci --version
+  build:
+    commands:
+      - fluentci run --wasm gleam check
+      - fluentci run --wasm gleam format
+      - fluentci run --wasm gleam test
+      - fluentci run --wasm gleam build
+  post_build:
+    commands:
+      - echo Build completed on \`date\`
+`}
+</CodeBlock>
+</TabItem>
+</Tabs>

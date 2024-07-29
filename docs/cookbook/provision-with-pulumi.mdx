@@ -1,0 +1,166 @@
+---
+sidebar_position: 22
+---
+
+# Provision with Pulumi
+
+This page explains how to provision infrastructure using [Pulumi](https://pulumi.com) with FluentCI.
+
+Pulumi is an infrastructure-as-code (IaC) tool that lets you provision and manage cloud infrastructure. Pulumi provides plugins called providers that let you interact with cloud providers and other APIs.
+
+## Before you begin
+
+The instructions on this page assume that you are familiar with `Pulumi`. In addition:
+
+- Have your Pulumi project ready.
+- If you don't already have a project to provision with Pulumi, you can create a default project by [installing and initializing Pulumi](https://www.pulumi.com/docs/install/).
+- Make sure you have a `Pulumi.yaml` file in your project root directory.
+- Make sure you have a `Pulumi.dev.yaml` file in your project root directory.
+
+## Using the Pulumi Plugin
+
+You can use FluentCI to provision infrastructure using Pulumi with the [pulumi plugin](https://github.com/fluent-ci-templates/pulumi-pipeline) without installing Pulumi CLI on your machine. FluentCI will handle everything for you.
+
+The following commands can be used to provision infrastructure using Pulumi:
+
+```bash
+fluentci run --wasm pulumi preview --stack dev
+fluentci run --wasm pulumi up --stack dev
+```
+
+## CI/CD pipeline integrations
+
+The following examples show how to integrate FluentCI with popular CI providers to provision infrastructure using Pulumi:
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+
+<Tabs>
+  <TabItem value="gha" label="Github Actions">
+    <CodeBlock language="yaml" title="ci.yml">
+      {`name: ci
+on:
+  push:
+    branches:
+      - main
+jobs:
+  tasks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Fluent CI
+        uses: fluentci-io/setup-fluentci@v5
+      - name: preview
+        run: fluentci run --wasm pulumi preview --stack dev
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ./service-account.json
+          PULUMI_ACCESS_TOKEN: \${{ secrets.PULUMI_ACCESS_TOKEN }}
+      - name: up
+        run: fluentci run --wasm pulumi up --stack dev
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ./service-account.json
+          PULUMI_ACCESS_TOKEN: \${{ secrets.PULUMI_ACCESS_TOKEN }}
+        `}
+    </CodeBlock>
+  </TabItem>
+  <TabItem value="gitlab" label="GitLab CI">
+    <CodeBlock language="yaml" title=".gitlab-ci.yml">
+      {`.docker:
+  image: denoland/deno:debian-1.42.4
+  services:
+    - docker:\${DOCKER_VERSION}-dind
+  variables:
+    DOCKER_HOST: tcp://docker:2376
+    DOCKER_TLS_VERIFY: "1"
+    DOCKER_TLS_CERTDIR: /certs
+    DOCKER_CERT_PATH: /certs/client
+    DOCKER_DRIVER: overlay2
+    DOCKER_VERSION: 20.10.16
+    GITLAB_ACCESS_TOKEN: $GITLAB_ACCESS_TOKEN
+    GOOGLE_APPLICATION_CREDENTIALS: ./service-account.json
+    PULUMI_ACCESS_TOKEN: $PULUMI_ACCESS_TOKEN
+.fluentci:
+  extends: .docker
+  before_script:
+    - apt-get update
+    - apt-get install -y curl tar gzip ca-certificates openssl git unzip libncursesw6
+    - deno install -A -r https://cli.fluentci.io -n fluentci
+    - fluentci --version
+    - curl -L https://dl.dagger.io/dagger/install.sh | DAGGER_VERSION=0.12.3 sh
+    - mv bin/dagger /usr/local/bin
+    - dagger version
+preview:
+  extends: .fluentci
+  script:
+    - fluentci run --wasm pulumi preview --stack dev
+up:
+  extends: .fluentci
+  script:
+    - fluentci run --wasm pulumi up --stack dev
+`}
+
+</CodeBlock>
+</TabItem>
+<TabItem value="circleci" label="Circle CI">
+<CodeBlock language="yaml" title=".circleci/config.yml">
+{`version: 2.1
+jobs:
+  job:
+    steps:
+      - checkout
+      - run: |
+          sudo apt-get update && sudo apt-get install -y curl unzip
+          curl -fsSL https://cli.fluentci.io | bash
+          fluentci --version
+        name: Setup FluentCI
+      - run: fluentci run --wasm pulumi preview --stack dev
+        name: preview
+      - run: fluentci run --wasm pulumi up --stack dev
+        name: up
+    machine:
+      image: ubuntu-2004:2023.07.1
+workflows:
+  fluentci:
+    jobs:
+      - job
+      `}
+</CodeBlock>
+</TabItem>
+<TabItem value="azure" label="Azure Pipelines">
+<CodeBlock language="yaml" title="azure-pipelines.yml">
+{`trigger:
+  - main
+pool:
+  vmImage: ubuntu-latest
+steps:
+  - script: |
+      curl -fsSL https://cli.fluentci.io | bash
+      fluentci --version
+      echo "##vso[task.prependpath]\${HOME}/.deno/bin
+    displayName: Setup FluentCI
+  - script: fluentci run --wasm pulumi preview --stack dev
+    displayName: preview
+  - script: fluentci run --wasm pulumi up --stack dev
+    displayName: up
+    `}
+</CodeBlock>
+</TabItem>
+<TabItem value="aws" label="AWS CodePipeline">
+<CodeBlock language="yaml" title="buildspec.yml">
+{`version: 0.2
+phases:
+  install:
+    commands:
+      - curl -fsSL https://cli.fluentci.io | bash
+      - fluentci --version
+  build:
+    commands:
+      - fluentci run --wasm pulumi preview --stack dev
+      - fluentci run --wasm pulumi up --stack dev
+  post_build:
+    commands:
+      - echo Build completed on \`date\``}
+</CodeBlock>
+</TabItem>
+</Tabs>
