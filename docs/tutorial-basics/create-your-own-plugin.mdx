@@ -88,3 +88,20 @@ fluentci run target/wasm32-unknown-unknown/release/*.wasm hello World!
 ```
 
 This will build the plugin and run it with the arguments `World!`, printing `Hello World!`.
+
+## Publishing the plugin
+
+Run the following command to publish the plugin:
+
+```bash
+fluentci login
+fluentci publish --wasm
+```
+
+Now your plugin is published and can be used in your pipelines like any other plugin:
+
+```bash
+fluentci run --wasm <your-plugin> hello World!
+```
+
+Note that `fluentci run` can run wasm plugin from local path, http(s) url or from any OCI registry that supports Wasm (ghcr.io, azurecr.io, gcr.io).
