@@ -123,7 +123,14 @@ const config = {
       prism: {
         theme: themes.github,
         darkTheme: themes.dracula,
-        additionalLanguages: ["bash", "typescript", "rust", "json", "yaml"],
+        additionalLanguages: [
+          "bash",
+          "typescript",
+          "rust",
+          "json",
+          "yaml",
+          "toml",
+        ],
       },
       algolia: {
         // The application ID provided by Algolia

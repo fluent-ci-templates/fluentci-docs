@@ -15,7 +15,7 @@ title: Installing FluentCI
 
 Install fluentci using the following command:
 ```bash
-deno install -A -r https://cli.fluentci.io -n fluentci
+deno install -A -g -r https://cli.fluentci.io -n fluentci
 ```
 
 You need to add the following to your `~/.bashrc` or `~/.zshrc` file:
