@@ -7,9 +7,23 @@ title: Node.js
 
 Run the following command to run the pre-built [Node.js Pipeline](https://github.com/fluent-ci-templates/nodejs-pipeline) without having to initialize a project:
 
-```bash
-fluentci run nodejs_pipeline
-```
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+
+<Tabs>
+  <TabItem value="dagger" label="Dagger">
+    <CodeBlock language="bash">
+      {`fluentci run nodejs test`}
+    </CodeBlock>
+  </TabItem>
+  <TabItem value="wasm" label="Wasm">
+    <CodeBlock language="bash">
+      {`fluentci run --wasm nodejs test`}
+
+</CodeBlock>
+</TabItem>
+</Tabs>
 
 ## Add Bun Pipeline to your project
 
@@ -34,17 +48,17 @@ fluentci
 
 ## Environment variables
 
-| Variable          | Description                                | Default    |
-| ----------------- | ------------------------------------------ | ---------- |
-| NODE_VERSION      | Node version to use                        |  18.16.1   |
-| PACKAGE_MANAGER   | Package manager to use (npm, yarn, pnpm)   |  npm       |
+| Variable        | Description                              | Default |
+| --------------- | ---------------------------------------- | ------- |
+| NODE_VERSION    | Node version to use                      | 18.16.1 |
+| PACKAGE_MANAGER | Package manager to use (npm, yarn, pnpm) | npm     |
 
 ## Jobs
 
-| Job    | Description         |
-| ------ | ------------------- |
-| test   | Run the tests       |
-| build  | Build the project   |
+| Job   | Description       |
+| ----- | ----------------- |
+| test  | Run the tests     |
+| build | Build the project |
 
 ## Programmatic usage
 

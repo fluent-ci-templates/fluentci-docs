@@ -5,9 +5,23 @@ title: Deno
 
 Run the following command to run the pre-built [Deno Pipeline](https://github.com/fluent-ci-templates/deno-pipeline) in your project to deploy to Deno Deploy:
 
-```bash
-fluentci run deno_pipeline deploy
-```
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+
+<Tabs>
+  <TabItem value="dagger" label="Dagger">
+    <CodeBlock language="bash">
+      {`fluentci run deno deploy`}
+    </CodeBlock>
+  </TabItem>
+  <TabItem value="wasm" label="Wasm">
+    <CodeBlock language="bash">
+      {`fluentci run --wasm deno deploy`}
+
+</CodeBlock>
+</TabItem>
+</Tabs>
 
 ## Environment variables (Deno Deploy)
 

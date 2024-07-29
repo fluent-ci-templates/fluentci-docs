@@ -6,9 +6,23 @@ title: Cloudflare
 
 Run the following command to run the pre-built [Cloudflare Pipeline](https://github.com/fluent-ci-templates/cloudflare-pipeline) in your project to deploy your Cloudflare Workers to [Cloudflare](https://cloudflare.com):
 
-```bash
-fluentci run cloudflare_pipeline deploy
-```
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+
+<Tabs>
+  <TabItem value="dagger" label="Dagger">
+    <CodeBlock language="bash">
+      {`fluentci run cloudflare deploy`}
+    </CodeBlock>
+  </TabItem>
+  <TabItem value="wasm" label="Wasm">
+    <CodeBlock language="bash">
+      {`fluentci run --wasm cloudflare deploy`}
+
+</CodeBlock>
+</TabItem>
+</Tabs>
 
 ## Environment variables
 
@@ -28,7 +42,7 @@ fluentci run cloudflare_pipeline deploy
 You can also use this pipeline programmatically:
 
 ```typescript
-import { deploy } from from "jsr:@fluentci/chromatic";
+import { deploy } from from "jsr:@fluentci/cloudflare";
 
 await deploy();
 

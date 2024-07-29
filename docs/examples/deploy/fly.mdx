@@ -1,0 +1,46 @@
+---
+sidebar_position: 5
+title: Fly
+---
+
+Run the following command to run the pre-built [Fly Pipeline](https://github.com/fluent-ci-templates/fly-pipeline) in your project to deploy your application to [fly.io](https://fly.io):
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+
+<Tabs>
+  <TabItem value="dagger" label="Dagger">
+    <CodeBlock language="bash">
+      {`fluentci run fly deploy`}
+    </CodeBlock>
+  </TabItem>
+  <TabItem value="wasm" label="Wasm">
+    <CodeBlock language="bash">
+      {`fluentci run --wasm fly deploy`}
+
+</CodeBlock>
+</TabItem>
+</Tabs>
+
+## Environment variables
+
+| Variable      | Description        |
+| ------------- | ------------------ |
+| FLY_API_TOKEN | Your Fly API Token |
+
+## Jobs
+
+| Job    | Description                      |
+| ------ | -------------------------------- |
+| deploy | Deploys your application to Fly. |
+
+## Programmatic usage
+
+You can also use this pipeline programmatically:
+
+```typescript
+import { deploy } from "jsr:@fluentci/fly";
+
+await deploy();
+```

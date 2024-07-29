@@ -7,9 +7,23 @@ title: Rust
 
 Run the following command to run the pre-built [Rust pipeline](https://github.com/fluent-ci-templates/rust-pipeline) without having to initialize a project:
 
-```bash
-fluentci run rust_pipeline
-```
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+
+<Tabs>
+  <TabItem value="dagger" label="Dagger">
+    <CodeBlock language="bash">
+      {`fluentci run rust build`}
+    </CodeBlock>
+  </TabItem>
+  <TabItem value="wasm" label="Wasm">
+    <CodeBlock language="bash">
+      {`fluentci run --wasm rust build`}
+
+</CodeBlock>
+</TabItem>
+</Tabs>
 
 ## Add Rust Pipeline to your project
 
@@ -25,7 +39,6 @@ You can then run the following command to start the pipeline:
 ```bash
 fluentci run .
 ```
-
 
 ## Jobs
 

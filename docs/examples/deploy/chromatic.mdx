@@ -6,9 +6,23 @@ title: Chromatic
 
 Run the following command to run the pre-built [Chromatic Pipeline](https://github.com/fluent-ci-templates/chromatic-pipeline) in your project to publish your storybook to [Chromatic](https://chromatic.com):
 
-```bash
-fluentci run chromatic_pipeline publish
-```
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+
+<Tabs>
+  <TabItem value="dagger" label="Dagger">
+    <CodeBlock language="bash">
+      {`fluentci run chromatic publish`}
+    </CodeBlock>
+  </TabItem>
+  <TabItem value="wasm" label="Wasm">
+    <CodeBlock language="bash">
+      {`fluentci run --wasm chromatic publich`}
+
+</CodeBlock>
+</TabItem>
+</Tabs>
 
 ## Environment variables
 

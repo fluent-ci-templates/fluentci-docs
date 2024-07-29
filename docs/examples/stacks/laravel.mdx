@@ -1,0 +1,65 @@
+---
+sidebar_position: 3
+title: Laravel
+---
+
+## Running the pre-built Laravel pipeline directly
+
+Run the following command to run the pre-built [Laravel pipeline](https://github.com/fluent-ci-templates/laravel-pipeline) without having to initialize a project:
+
+```bash
+fluentci run laravel_pipeline
+```
+
+## Add Laravel Pipeline to your project
+
+Run the following command to add a Laravel pipeline to your project:
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+
+<Tabs>
+  <TabItem value="dagger" label="Dagger">
+    <CodeBlock language="bash">
+      {`fluentci run laravel test`}
+    </CodeBlock>
+  </TabItem>
+  <TabItem value="wasm" label="Wasm">
+    <CodeBlock language="bash">
+      {`fluentci run --wasm laravel test`}
+
+</CodeBlock>
+</TabItem>
+</Tabs>
+
+This will create a `.fluentci` directory in your project, feel free to customize the pipeline for your needs.
+You can then run the following command to start the pipeline:
+
+```bash
+fluentci run .
+```
+
+## Environment variables
+
+| Variable                | Description                                | Default Value |
+| ----------------------- | ------------------------------------------ | ------------- |
+| `MARIADB_USER`          | The username for the MariaDB database      | `user`        |
+| `MARIADB_PASSWORD`      | The password for the MariaDB database      | `password`    |
+| `MARIADB_ROOT_PASSWORD` | The root password for the MariaDB database | `root`        |
+
+## Jobs
+
+| Job  | Description |
+| ---- | ----------- |
+| test | Run tests   |
+
+## Programmatic usage
+
+You can also use this pipeline programmatically:
+
+```ts
+import { test } from "jsr:@fluentci/laravel";
+
+await test();
+```

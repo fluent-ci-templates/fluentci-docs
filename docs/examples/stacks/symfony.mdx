@@ -15,9 +15,23 @@ fluentci run symfony_pipeline
 
 Run the following command to add a Symfony pipeline to your project:
 
-```bash
-fluentci init -t symfony
-```
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+
+<Tabs>
+  <TabItem value="dagger" label="Dagger">
+    <CodeBlock language="bash">
+      {`fluentci run symfony phpUnit`}
+    </CodeBlock>
+  </TabItem>
+  <TabItem value="wasm" label="Wasm">
+    <CodeBlock language="bash">
+      {`fluentci run --wasm symfony phpUnit`}
+
+</CodeBlock>
+</TabItem>
+</Tabs>
 
 This will create a `.fluentci` directory in your project, feel free to customize the pipeline for your needs.
 You can then run the following command to start the pipeline:
@@ -26,26 +40,25 @@ You can then run the following command to start the pipeline:
 fluentci run .
 ```
 
-
 ## Jobs
 
-| Job          | Description                  |
-| ------------ | ---------------------------- |
-| phpstan      | Run PHPStan                  |
-| phpcs        | Run PHPCS                    |
-| twigLint     | Lint Twig templates          |
-| xliffLint    | Lint XLIFF translations      |
-| yamlLint     | Lint YAML files              |
-| doctrineLint | Lint Doctrine entities       |
-| containerLint| Lint Parameters and Services |
-| phpUnit      | Run PHPUnit                  | 
+| Job           | Description                  |
+| ------------- | ---------------------------- |
+| phpstan       | Run PHPStan                  |
+| phpcs         | Run PHPCS                    |
+| twigLint      | Lint Twig templates          |
+| xliffLint     | Lint XLIFF translations      |
+| yamlLint      | Lint YAML files              |
+| doctrineLint  | Lint Doctrine entities       |
+| containerLint | Lint Parameters and Services |
+| phpUnit       | Run PHPUnit                  |
 
 ## Programmatic usage
 
 You can also use this pipeline programmatically:
 
 ```ts
-import { 
+import {
   phpcs,
   phpstan,
   twigLint,
@@ -54,7 +67,7 @@ import {
   doctrineLint,
   containerLint,
   phpUnit,
- } from "jsr:@fluentci/symfony";
+} from "jsr:@fluentci/symfony";
 
 await phpcs();
 await phpstan();
@@ -64,5 +77,4 @@ await yamlLint();
 await doctrineLint();
 await containerLint();
 await phpUnit();
-
 ```

@@ -5,22 +5,36 @@ title: Codecov
 
 Run the following command to run the pre-built [Codecov Pipeline](https://github.com/fluent-ci-templates/codecov-pipeline) in your project to upload coverage to [Codecov](https://about.codecov.io/) ☂️:
 
-```bash
-fluentci run codecov_pipeline upload
-```
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+
+<Tabs>
+  <TabItem value="dagger" label="Dagger">
+    <CodeBlock language="bash">
+      {`fluentci run codecov upload`}
+    </CodeBlock>
+  </TabItem>
+  <TabItem value="wasm" label="Wasm">
+    <CodeBlock language="bash">
+      {`fluentci run --wasm codecov upload`}
+
+</CodeBlock>
+</TabItem>
+</Tabs>
 
 ## Environment Variables
 
 | Variable      | Description         | Usage    |
-|---------------|---------------------|----------|
+| ------------- | ------------------- | -------- |
 | CODECOV_TOKEN | Your Codecov token. | Required |
 | CODECOV_URL   | Your Codecov URL.   | Optional |
 
 ## Jobs
 
-| Job     | Description                      |
-|---------|----------------------------------|
-| upload  | Uploads coverage to Codecov.     |
+| Job    | Description                  |
+| ------ | ---------------------------- |
+| upload | Uploads coverage to Codecov. |
 
 ## Programmatic usage
 

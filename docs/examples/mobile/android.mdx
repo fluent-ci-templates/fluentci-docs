@@ -7,9 +7,23 @@ title: Android
 
 Run the following command to run the pre-built [Android pipeline](https://github.com/fluent-ci-templates/android-pipeline) without having to initialize a project:
 
-```bash
-fluentci run android_pipeline
-```
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+
+<Tabs>
+  <TabItem value="dagger" label="Dagger">
+    <CodeBlock language="bash">
+      {`fluentci run android`}
+    </CodeBlock>
+  </TabItem>
+  <TabItem value="wasm" label="Wasm">
+    <CodeBlock language="bash">
+      {`fluentci run --wasm android assembleRelease`}
+
+</CodeBlock>
+</TabItem>
+</Tabs>
 
 ## Add Android Pipeline to your project
 
@@ -26,16 +40,15 @@ You can then run the following command to start the pipeline:
 fluentci run .
 ```
 
-
 ## Jobs
 
-| Job            | Description           |
-| -------------- | --------------------- |
-| lintDebug      | Lint your code        |
-| assembleDebug  | generate apk (debug)  |
-| debugTests     | Run your tests        |
-| assembleRelease| generate apk (release)|
-| bundleRelease  | generate aab (release)|
+| Job             | Description            |
+| --------------- | ---------------------- |
+| lintDebug       | Lint your code         |
+| assembleDebug   | generate apk (debug)   |
+| debugTests      | Run your tests         |
+| assembleRelease | generate apk (release) |
+| bundleRelease   | generate aab (release) |
 
 ## Programmatic usage
 
@@ -43,7 +56,6 @@ You can also use this pipeline programmatically:
 
 ```ts
 import { lintDebug, assembleDebug, debugTests } from "jsr:@fluentci/android";
-
 
 await lintDebug();
 await assembleDebug();

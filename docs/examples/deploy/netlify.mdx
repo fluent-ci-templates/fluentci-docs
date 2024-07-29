@@ -3,26 +3,39 @@ sidebar_position: 7
 title: Netlify
 ---
 
-
 Run the following command to run the pre-built [Netlify Pipeline](https://github.com/fluent-ci-templates/netlify-pipeline) in your project to deploy your application to [Netlify](https://www.netlify.com):
 
-```bash
-fluentci run netlify_pipeline deploy
-```
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+
+<Tabs>
+  <TabItem value="dagger" label="Dagger">
+    <CodeBlock language="bash">
+      {`fluentci run netlify deploy`}
+    </CodeBlock>
+  </TabItem>
+  <TabItem value="wasm" label="Wasm">
+    <CodeBlock language="bash">
+      {`fluentci run --wasm netlify deploy`}
+
+</CodeBlock>
+</TabItem>
+</Tabs>
 
 ## Environment variables
 
 | Variable           | Description                             |
-| -------------------| ----------------------------------------|
+| ------------------ | --------------------------------------- |
 | NETLIFY_AUTH_TOKEN | Your Netlify Access Token               |
 | NETLIFY_SITE_ID    | Your Netlify Site ID                    |
 | NETLIFY_SITE_DIR   | Your directory to deploy (default: `.`) |
 
 ## Jobs
 
-| Job     | Description                      |
-|---------|----------------------------------|
-| deploy  | Deploys your application to Netlify. |
+| Job    | Description                          |
+| ------ | ------------------------------------ |
+| deploy | Deploys your application to Netlify. |
 
 ## Programmatic usage
 
@@ -33,5 +46,4 @@ import { build, deploy } from "jsr:@fluentci/netlify";
 
 await build();
 await deploy();
-
 ```

@@ -7,9 +7,23 @@ title: Fastlane
 
 Run the following command to run the pre-built [Fastlane pipeline](https://github.com/fluent-ci-templates/fastlane-pipeline) without having to initialize a project:
 
-```bash
-fluentci run fastlane_pipeline
-```
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+
+<Tabs>
+  <TabItem value="dagger" label="Dagger">
+    <CodeBlock language="bash">
+      {`fluentci run fastlane execLane buildRelease`}
+    </CodeBlock>
+  </TabItem>
+  <TabItem value="wasm" label="Wasm">
+    <CodeBlock language="bash">
+      {`fluentci run --wasm fastlane execLane buildRelease`}
+
+</CodeBlock>
+</TabItem>
+</Tabs>
 
 ## Add Fastlane Pipeline to your project
 
@@ -41,4 +55,3 @@ import { execLane } from "jsr:@fluentci/fastlane";
 
 await execLane("buildRelease");
 ```
-

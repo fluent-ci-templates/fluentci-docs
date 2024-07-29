@@ -1,0 +1,93 @@
+---
+sidebar_position: 4
+title: Firebase
+---
+
+Run the following command to run the pre-built [Firebase Pipeline](https://github.com/fluent-ci-templates/firebase-pipeline) in your project to deploy your Cloudflare Workers to [Cloudflare](https://cloudflare.com):
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+
+<Tabs>
+  <TabItem value="dagger" label="Dagger">
+    <CodeBlock language="bash">
+      {`fluentci run firebase`}
+    </CodeBlock>
+  </TabItem>
+  <TabItem value="wasm" label="Wasm">
+    <CodeBlock language="bash">
+      {`fluentci run --wasm firebase deploy`}
+
+</CodeBlock>
+</TabItem>
+</Tabs>
+
+Or, if you want to use it as a template:
+
+```bash
+fluentci init -t firebase
+```
+
+This will create a `.fluentci` folder in your project.
+
+Now you can run the pipeline with:
+
+```bash
+fluentci run .
+```
+
+Or simply:
+
+```bash
+fluentci
+```
+
+## 🧩 Dagger Module
+
+Use as a [Dagger](https://dagger.io) Module:
+
+```bash
+dagger install github.com/fluent-ci-templates/firebase-pipeline@main
+```
+
+Call a function from the module:
+
+```bash
+dagger call build --src .
+dagger call deploy --src . --token env:FIREBASE_TOKEN
+```
+
+## 🛠️ Environment Variables
+
+| Variable       | Description                |
+| -------------- | -------------------------- |
+| FIREBASE_TOKEN | Your firebase Access Token |
+
+## ✨ Jobs
+
+| Job    | Description                 |
+| ------ | --------------------------- |
+| build  | Build your project.         |
+| deploy | Deploy to firebase hosting. |
+
+```typescript
+build(
+  src: string | Directory | undefined = "."
+): Promise<Directory | string>
+
+deploy(
+  src: string | Directory | undefined = ".",
+  token?: string | Secret
+): Promise<string>
+```
+
+## 👨‍💻 Programmatic usage
+
+You can also use this pipeline programmatically:
+
+```typescript
+import { deploy } from "jsr:@fluentci/firebase";
+
+await deploy(".");
+```

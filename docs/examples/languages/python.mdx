@@ -3,14 +3,27 @@ sidebar_position: 9
 title: Python
 ---
 
-
 ## Running the pre-built Python pipeline directly
 
 Run the following command to run the pre-built [Python pipeline](https://github.com/fluent-ci-templates/python-pipeline) without having to initialize a project:
 
-```bash
-fluentci run python_pipeline
-```
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+
+<Tabs>
+  <TabItem value="dagger" label="Dagger">
+    <CodeBlock language="bash">
+      {`fluentci run python test`}
+    </CodeBlock>
+  </TabItem>
+  <TabItem value="wasm" label="Wasm">
+    <CodeBlock language="bash">
+      {`fluentci run --wasm python test`}
+
+</CodeBlock>
+</TabItem>
+</Tabs>
 
 ## Add Python Pipeline to your project
 
@@ -35,15 +48,15 @@ fluentci
 
 ## Environment variables
 
-| Variable         | Description                                          | Default       |
-| ---------------- | ------------------------------------------------------| ------------- |
-|`PACKAGE_MANAGER` | The package manager to use (`poetry`, `pip`, `pipenv`) | `poetry`      |
+| Variable          | Description                                            | Default  |
+| ----------------- | ------------------------------------------------------ | -------- |
+| `PACKAGE_MANAGER` | The package manager to use (`poetry`, `pip`, `pipenv`) | `poetry` |
 
 ## Jobs
 
-| Job       | Description              |
-| --------- | ------------------------ |
-| test      | Run tests (using pytest) |
+| Job  | Description              |
+| ---- | ------------------------ |
+| test | Run tests (using pytest) |
 
 ## Programmatic usage
 

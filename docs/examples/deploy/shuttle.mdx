@@ -1,0 +1,46 @@
+---
+sidebar_position: 10
+title: Shuttle
+---
+
+Run the following command to run the pre-built [Shuttle Pipeline](https://github.com/fluent-ci-templates/shuttle-pipeline) in your project to deploy your Rust application to [Shuttle](https://shuttle.rs):
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+
+<Tabs>
+  <TabItem value="dagger" label="Dagger">
+    <CodeBlock language="bash">
+      {`fluentci run shuttle deploy`}
+    </CodeBlock>
+  </TabItem>
+  <TabItem value="wasm" label="Wasm">
+    <CodeBlock language="bash">
+      {`fluentci run --wasm shuttle deploy`}
+
+</CodeBlock>
+</TabItem>
+</Tabs>
+
+## Environment Variables
+
+| Variable        | Description          |
+| --------------- | -------------------- |
+| SHUTTLE_API_KEY | Your Shuttle API key |
+
+## Jobs
+
+| Job    | Description                                 |
+| ------ | ------------------------------------------- |
+| deploy | Deploy your Rust application to shuttle.rs. |
+
+## Programmatic usage
+
+You can also use this pipeline programmatically:
+
+```typescript
+import { deploy } from "jsr:@fluentci/shuttle";
+
+await deploy();
+```

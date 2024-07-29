@@ -7,10 +7,23 @@ title: Elixir
 
 Run the following command to run the pre-built [Elixir pipeline](https://github.com/fluent-ci-templates/elixir-pipeline) without having to initialize a project:
 
-```bash
-fluentci run elixir_pipeline
-```
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
 
+<Tabs>
+  <TabItem value="dagger" label="Dagger">
+    <CodeBlock language="bash">
+      {`fluentci run elixir test`}
+    </CodeBlock>
+  </TabItem>
+  <TabItem value="wasm" label="Wasm">
+    <CodeBlock language="bash">
+      {`fluentci run --wasm elixir test`}
+
+</CodeBlock>
+</TabItem>
+</Tabs>
 ## Add Elixir Pipeline to your project
 
 Run the following command to add Elixir pipeline to your project:
@@ -28,9 +41,9 @@ fluentci run .
 
 ## Jobs
 
-| Job   | Description      |
-| ----- | ---------------- |
-| test  | Run your tests   |
+| Job  | Description    |
+| ---- | -------------- |
+| test | Run your tests |
 
 ## Programmatic usage
 
