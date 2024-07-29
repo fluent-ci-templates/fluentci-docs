@@ -1,0 +1,90 @@
+---
+sidebar_position: 3
+title: Create your own plugin
+---
+
+## Introduction
+
+Plugins are the building blocks of Fluent CI. They are the core of the system and are responsible for running the tasks in your pipeline. You can create your own plugins to run custom tasks in your pipeline.
+There are two formats for creating plugins: `Dagger based plugins` and `Wasm based plugins`.
+
+## Dagger based plugins
+
+[Dagger](https://dagger.io) based plugins are written in TypeScript, executed by Deno and run in a containerized environment.
+
+## Wasm based plugins
+
+Wasm based plugins are written in Rust, compiled to WebAssembly and run directly in the host environment with isolated dependencies (no need for Docker), thanks to Nix, Pkgx, Devbox, etc and [extism](https://extism.org/).
+
+## Creating a plugin
+
+Run the following command to create a new plugin:
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+
+<Tabs>
+  <TabItem value="wasm" label="Wasm">
+    <CodeBlock language="bash">{`fluentci init --standalone --wasm`}</CodeBlock>
+  </TabItem>
+  <TabItem value="dagger" label="Dagger">
+    <CodeBlock language="bash">{`fluentci init --standalone`}</CodeBlock>
+  </TabItem>
+</Tabs>
+
+This will create a new plugin in the current directory. Feel free to customize the plugin for your needs.
+You can also specify an existing template to use as a base for your plugin:
+
+<Tabs>
+  <TabItem value="wasm" label="Wasm">
+    <CodeBlock language="bash">{`fluentci init --standalone --wasm -t <template>`}</CodeBlock>
+  </TabItem>
+  <TabItem value="dagger" label="Dagger">
+    <CodeBlock language="bash">{`fluentci init --standalone -t <template>`}</CodeBlock>
+  </TabItem>
+</Tabs>
+
+## Plugin structure
+
+The plugin structure is as follows:
+
+```
+.
+├── Cargo.lock
+├── Cargo.toml
+├── fluentci.toml
+└── src
+    └── lib.rs
+```
+
+## Plugin entry point
+
+The plugin entry point is the `src/lib.rs` file. This file contains the plugin logic and is the main file that will be executed when the plugin is run.
+
+{" "}
+
+<CodeBlock language="rust" title="src/lib.rs">{`use extism_pdk::*;
+use fluentci_pdk::dag;\n
+#[plugin_fn]
+pub fn hello(args: String) -> FnResult<String> {
+  let stdout = dag()
+    .pipeline("hello")?
+    .with_exec(vec!["echo Hello", &args])?
+    .stdout()?;
+  
+  Ok(stdout)
+}`}</CodeBlock>
+
+This is an example of a simple plugin that prints `Hello` followed by the arguments passed to the plugin.
+
+## Running the plugin
+
+Run the following command to run the plugin:
+
+```bash
+cargo build --target wasm32-unknown-unknown --release
+fluentci run target/wasm32-unknown-unknown/release/*.wasm hello World!
+```
+
+This will build the plugin and run it with the arguments `World!`, printing `Hello World!`.
