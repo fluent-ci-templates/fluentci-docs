@@ -63,3 +63,137 @@ import { test } from "jsr:@fluentci/laravel";
 
 await test();
 ```
+
+## CI/CD pipeline integrations
+
+The following examples show how to integrate FluentCI with popular CI providers to test Laravel applications:
+
+<Tabs>
+  <TabItem value="gha" label="Github Actions">
+    <CodeBlock language="yaml" title="ci.yml">
+      {`name: ci
+on:
+  push:
+    branches:
+      - main
+jobs:
+  tasks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Shutdown Ubuntu MySQL (SUDO)
+        run: |
+          sudo service mysql stop
+          sudo apt-get remove --purge mysql-server mysql-client mysql-common -y
+          sudo apt-get autoremove -y
+          sudo apt-get autoclean
+          sudo rm -rf /etc/mysql
+          sudo rm -rf /var/lib/mysql
+      - name: Setup Fluent CI CLI
+        uses: fluentci-io/setup-fluentci@v5
+        with:
+          wasm: true
+          plugin: mariadb
+          args: |
+            start
+      - name: test
+        run: fluentci run --wasm laravel test
+    `}
+    </CodeBlock>
+  </TabItem>
+  <TabItem value="gitlab" label="GitLab CI">
+    <CodeBlock language="yaml" title=".gitlab-ci.yml">
+      {`.docker:
+  image: denoland/deno:debian-1.42.4
+  services:
+    - docker:\${DOCKER_VERSION}-dind
+  variables:
+    DOCKER_HOST: tcp://docker:2376
+    DOCKER_TLS_VERIFY: "1"
+    DOCKER_TLS_CERTDIR: /certs
+    DOCKER_CERT_PATH: /certs/client
+    DOCKER_DRIVER: overlay2
+    DOCKER_VERSION: 20.10.16
+    GITLAB_ACCESS_TOKEN: $GITLAB_ACCESS_TOKEN
+.fluentci:
+  extends: .docker
+  before_script:
+    - apt-get update
+    - apt-get install -y curl tar gzip ca-certificates openssl git unzip libncursesw6
+    - deno install -A -r https://cli.fluentci.io -n fluentci
+    - fluentci --version
+    - curl -L https://dl.dagger.io/dagger/install.sh | DAGGER_VERSION=0.12.3 sh
+    - mv bin/dagger /usr/local/bin
+    - dagger version
+test:
+  extends: .fluentci
+  script:
+    - fluentci run --wasm mariadb start 
+    - fluentci run --wasm laravel test
+`}
+
+</CodeBlock>
+</TabItem>
+<TabItem value="circleci" label="Circle CI">
+<CodeBlock language="yaml" title=".circleci/config.yml">
+{`version: 2.1
+jobs:
+  job:
+    steps:
+      - checkout
+      - run: |
+          sudo apt-get update && sudo apt-get install -y curl unzip
+          curl -fsSL https://cli.fluentci.io | bash
+          fluentci --version
+        name: Setup FluentCI
+      - run: |
+          fluentci run --wasm mariadb start
+          fluentci run --wasm laravel test
+        name: test
+    machine:
+      image: ubuntu-2004:2023.07.1
+workflows:
+  fluentci:
+    jobs:
+      - job
+      `}
+</CodeBlock>
+</TabItem>
+<TabItem value="azure" label="Azure Pipelines">
+<CodeBlock language="yaml" title="azure-pipelines.yml">
+{`trigger:
+  - main
+pool:
+  vmImage: ubuntu-latest
+steps:
+  - script: |
+      curl -fsSL https://cli.fluentci.io | bash
+      fluentci --version
+      echo "##vso[task.prependpath]\${HOME}/.deno/bin
+    displayName: Setup FluentCI
+  - script: |
+      fluentci run --wasm mariadb start
+      fluentci run --wasm laravel test
+    displayName: test
+    `}
+</CodeBlock>
+</TabItem>
+<TabItem value="aws" label="AWS CodePipeline">
+<CodeBlock language="yaml" title="buildspec.yml">
+{`version: 0.2
+phases:
+  install:
+    commands:
+      - curl -fsSL https://cli.fluentci.io | bash
+      - fluentci --version
+  build:
+    commands:
+      - fluentci run --wasm mariadb start
+      - fluentci run --wasm laravel test
+  post_build:
+    commands:
+      - echo Build completed on \`date\`
+      `}
+</CodeBlock>
+</TabItem>
+</Tabs>
