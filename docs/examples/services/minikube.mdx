@@ -99,7 +99,8 @@ jobs:
     - dagger version
 minikube:
   extends: .fluentci
-  script: - fluentci run --wasm minikube start
+  script:
+    - fluentci run --wasm minikube start
 `}
 
 </CodeBlock>

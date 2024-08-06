@@ -99,7 +99,8 @@ jobs:
     - dagger version
 jaeger:
   extends: .fluentci
-  script: - fluentci run --wasm jaeger start
+  script:
+    - fluentci run --wasm jaeger start
 `}
 
 </CodeBlock>

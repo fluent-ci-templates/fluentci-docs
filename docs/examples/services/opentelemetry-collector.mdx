@@ -99,7 +99,8 @@ jobs:
     - dagger version
 opentelemetry-collector:
   extends: .fluentci
-  script: - fluentci run --wasm opentelemetry-collector start
+  script:
+    - fluentci run --wasm opentelemetry-collector start
 `}
 
 </CodeBlock>

@@ -99,7 +99,8 @@ jobs:
     - dagger version
 nats:
   extends: .fluentci
-  script: - fluentci run --wasm nats start
+  script:
+    - fluentci run --wasm nats start
 `}
 
 </CodeBlock>

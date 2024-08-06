@@ -99,7 +99,8 @@ jobs:
     - dagger version
 mariadb:
   extends: .fluentci
-  script: - fluentci run --wasm mariadb start
+  script:
+    - fluentci run --wasm mariadb start
 `}
 
 </CodeBlock>

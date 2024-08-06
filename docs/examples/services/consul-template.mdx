@@ -99,7 +99,8 @@ jobs:
     - dagger version
 consul-template:
   extends: .fluentci
-  script: - fluentci run --wasm consul-template start
+  script:
+    - fluentci run --wasm consul-template start
 `}
 
 </CodeBlock>

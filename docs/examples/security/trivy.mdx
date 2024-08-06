@@ -1,0 +1,182 @@
+---
+sidebar_position: 5
+title: Trivy
+---
+
+[Trify](https://github.com/aquasecurity/trivy) is a comprehensive and versatile security scanner. Trivy has scanners that look for security issues, and targets where it can find those issues.
+
+## 🚀 Usage
+
+Add the following command to your CI configuration file:
+
+```bash
+# Scan config files for miscongurations
+fluentci run --wasm trivy config . --format=table --exit-code=1
+# Scan container images for vulnerabilities
+fluentci run --wasm trivy image hashicorp/terraform:1.6 --format=table --exit-code=1
+```
+
+## Commands
+
+| Name   | Description                                |
+| ------ | ------------------------------------------ |
+| setup  | Install Trivy                              |
+| config | Scan config files for miscongurations      |
+| image  | Scan container images for vulnerabilities  |
+| fs     | Scan local filesystem                      |
+| repo   | Scan a git repository                      |
+| sbom   | Scan SBOM for vulnerabilities and licenses |
+| rootfs | Scan rootfs                                |
+
+## Code examples
+
+Add `fluentci-pdk` crate to your `Cargo.toml`:
+
+```toml
+[dependencies]
+fluentci-pdk = "0.2.1"
+```
+
+Use the following code to call a module function:
+
+```rust
+use fluentci_pdk::dag;
+
+// ...
+
+dag().call(
+  "https://pkg.fluentci.io/trivy@v0.5.0?wasm=1",
+  "config",
+  vec!["."],
+);
+
+dag().call(
+  "https://pkg.fluentci.io/trivy@v0.5.0?wasm=1",
+  "image",
+  vec!["hashicorp/terraform:1.6"],
+);
+```
+
+## CI/CD Integration
+
+The following example shows how to integrate FluentCI with popular CI providers to scan vulnerabilities using Trivy:
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+
+<Tabs>
+  <TabItem value="gha" label="Github Actions">
+    <CodeBlock language="yaml" title="ci.yml">
+      {`name: ci
+on:
+  push:
+    branches:
+      - main
+jobs:
+  tasks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Fluent CI
+        uses: fluentci-io/setup-fluentci@v5
+        with:
+          wasm: true
+          plugin: trivy
+          args: |
+            config . --format=table --exit-code=1
+      `}
+    </CodeBlock>
+  </TabItem>
+  <TabItem value="gitlab" label="GitLab CI">
+    <CodeBlock language="yaml" title=".gitlab-ci.yml">
+      {`
+.docker:
+  image: denoland/deno:debian-1.42.4
+  services:
+    - docker:\${DOCKER_VERSION}-dind
+  variables:
+    DOCKER_HOST: tcp://docker:2376
+    DOCKER_TLS_VERIFY: "1"
+    DOCKER_TLS_CERTDIR: /certs
+    DOCKER_CERT_PATH: /certs/client
+    DOCKER_DRIVER: overlay2
+    DOCKER_VERSION: 20.10.16
+    GITLAB_ACCESS_TOKEN: $GITLAB_ACCESS_TOKEN
+.fluentci:
+  extends: .docker
+  before_script:
+    - apt-get update
+    - apt-get install -y curl tar gzip ca-certificates openssl git unzip libncursesw6
+    - deno install -A -r https://cli.fluentci.io -n fluentci
+    - fluentci --version
+    - curl -L https://dl.dagger.io/dagger/install.sh | DAGGER_VERSION=0.12.3 sh
+    - mv bin/dagger /usr/local/bin
+    - dagger version
+scan:
+  extends: .fluentci
+  script:
+    - fluentci run --wasm trivy config . --format=table --exit-code=1
+`}
+
+</CodeBlock>
+</TabItem>
+<TabItem value="circleci" label="Circle CI">
+<CodeBlock language="yaml" title=".circleci/config.yml">
+{`version: 2.1
+jobs:
+  job:
+    steps:
+      - checkout
+      - run: |
+          sudo apt-get update && sudo apt-get install -y curl unzip
+          curl -fsSL https://cli.fluentci.io | bash
+          fluentci --version
+        name: Setup FluentCI
+      - run: fluentci run --wasm trivy config . --format=table --exit-code=1
+        name: generate sbon
+    machine:
+      image: ubuntu-2004:2023.07.1
+workflows:
+  fluentci:
+    jobs:
+      - job
+`}
+</CodeBlock>
+</TabItem>
+<TabItem value="azure" label="Azure Pipelines">
+<CodeBlock language="yaml" title="azure-pipelines.yml">
+{`trigger:
+  - main
+pool:
+  vmImage: ubuntu-latest
+steps:
+  - script: |
+      curl -fsSL https://cli.fluentci.io | bash
+      fluentci --version
+      echo "##vso[task.prependpath]\${HOME}/.deno/bin
+    displayName: Setup FluentCI
+  - script: |
+      fluentci run --wasm trivy config . --format=table --exit-code=1
+    displayName: generate sbon
+`}
+</CodeBlock>
+</TabItem>
+<TabItem value="aws" label="AWS CodePipeline">
+<CodeBlock language="yaml" title="buildspec.yml">
+{`version: 0.2
+phases:
+  install:
+    commands:
+      - curl -fsSL https://cli.fluentci.io | bash
+      - fluentci --version
+  build:
+    commands:
+      - fluentci run --wasm trivy config . --format=table --exit-code=1
+  post_build:
+    commands:
+      - echo Build completed on \`date\``}
+</CodeBlock>
+</TabItem>
+</Tabs>
+```

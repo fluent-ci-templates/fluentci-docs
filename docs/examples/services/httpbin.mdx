@@ -99,7 +99,8 @@ jobs:
     - dagger version
 httpbin:
   extends: .fluentci
-  script: - fluentci run --wasm httpbin start
+  script:
+    - fluentci run --wasm httpbin start
 `}
 
 </CodeBlock>

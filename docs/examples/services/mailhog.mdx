@@ -101,7 +101,8 @@ jobs:
     - dagger version
 mailhog:
   extends: .fluentci
-  script: - fluentci run --wasm mailhog start
+  script:
+    - fluentci run --wasm mailhog start
 `}
 
 </CodeBlock>

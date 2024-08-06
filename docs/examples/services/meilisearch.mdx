@@ -99,7 +99,8 @@ jobs:
     - dagger version
 meilisearch:
   extends: .fluentci
-  script: - fluentci run --wasm meilisearch start
+  script:
+    - fluentci run --wasm meilisearch start
 `}
 
 </CodeBlock>

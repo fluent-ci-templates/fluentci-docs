@@ -99,7 +99,8 @@ jobs:
     - dagger version
 neo4j:
   extends: .fluentci
-  script: - fluentci run --wasm neo4j start
+  script:
+    - fluentci run --wasm neo4j start
 `}
 
 </CodeBlock>

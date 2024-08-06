@@ -99,7 +99,8 @@ jobs:
     - dagger version
 redis:
   extends: .fluentci
-  script: - fluentci run --wasm redis start
+  script:
+    - fluentci run --wasm redis start
 `}
 
 </CodeBlock>

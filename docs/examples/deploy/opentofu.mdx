@@ -1,0 +1,211 @@
+---
+sidebar_position: 15
+title: OpenTofu
+---
+
+[OpenTofu](https://opentofu.org/) lets you declaratively manage your cloud infrastructure.
+
+## 🚀 Usage
+
+Add the following command to your CI configuration file:
+
+```bash
+fluentci run --wasm opentofu init
+fluentci run --wasm opentofu validate
+fluentci run --wasm opentofu plan
+fluentci run --wasm opentofu apply
+```
+
+## Commands
+
+| Name     | Description                                        |
+| -------- | -------------------------------------------------- |
+| setup    | Install a specific version of OpenTofu.            |
+| init     | Prepare your working directory for other commands  |
+| validate | Check whether the configuration is valid           |
+| plan     | Show changes required by the current configuration |
+| apply    | Create or update infrastructure                    |
+| destroy  | Destroy previously-created infrastructure          |
+
+## Code Examples
+
+Add `fluentci-pdk` crate to your `Cargo.toml`:
+
+```toml
+[dependencies]
+fluentci-pdk = "0.2.1"
+```
+
+Use the following code to call a module function:
+
+```rust
+use fluentci_pdk::dag;
+
+// ...
+
+dag().call("https://pkg.fluentci.io/opentofu@v0.1.0?wasm=1", "init", vec![])?;
+dag().call("https://pkg.fluentci.io/opentofu@v0.1.0?wasm=1", "validate", vec![])?;
+dag().call("https://pkg.fluentci.io/opentofu@v0.1.0?wasm=1", "plan", vec![])?;
+dag().call("https://pkg.fluentci.io/opentofu@v0.1.0?wasm=1", "apply", vec![])?;
+```
+
+## CI/CD pipeline integrations
+
+The following examples show how to integrate FluentCI with popular CI providers to manage cloud infrastructure using OpenTofu:
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+
+<Tabs>
+  <TabItem value="gha" label="Github Actions">
+    <CodeBlock language="yaml" title="ci.yml">
+      {`name: ci
+on:
+  push:
+    branches:
+      - main
+jobs:
+  tasks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Fluent CI
+        uses: fluentci-io/setup-fluentci@v5
+      - name: init
+        run: fluentci run --wasm opentofu init
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ./service-account.json
+      - name: validate
+        run: fluentci run --wasm opentofu validate
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ./service-account.json
+      - name: plan
+        run: fluentci run --wasm opentofu plan
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ./service-account.json
+      - name: apply
+        run: fluentci run --wasm opentofu apply
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ./service-account.json
+    `}
+    </CodeBlock>
+  </TabItem>
+  <TabItem value="gitlab" label="GitLab CI">
+    <CodeBlock language="yaml" title=".gitlab-ci.yml">
+      {`.docker:
+  image: denoland/deno:debian-1.42.4
+  services:
+    - docker:\${DOCKER_VERSION}-dind
+  variables:
+    DOCKER_HOST: tcp://docker:2376
+    DOCKER_TLS_VERIFY: "1"
+    DOCKER_TLS_CERTDIR: /certs
+    DOCKER_CERT_PATH: /certs/client
+    DOCKER_DRIVER: overlay2
+    DOCKER_VERSION: 20.10.16
+    GITLAB_ACCESS_TOKEN: $GITLAB_ACCESS_TOKEN
+    GOOGLE_APPLICATION_CREDENTIALS: ./service-account.json
+.fluentci:
+  extends: .docker
+  before_script:
+    - apt-get update
+    - apt-get install -y curl tar gzip ca-certificates openssl git unzip libncursesw6
+    - deno install -A -r https://cli.fluentci.io -n fluentci
+    - fluentci --version
+    - curl -L https://dl.dagger.io/dagger/install.sh | DAGGER_VERSION=0.12.3 sh
+    - mv bin/dagger /usr/local/bin
+    - dagger version
+init:
+  extends: .fluentci
+  script:
+    - fluentci run --wasm opentofu init
+validate:
+  extends: .fluentci
+  script:
+    - fluentci run --wasm opentofu validate
+plan:
+  extends: .fluentci
+  script:
+    - fluentci run --wasm opentofu plan
+apply:
+  extends: .fluentci
+  script:
+    - fluentci run --wasm opentofu apply
+`}
+
+</CodeBlock>
+</TabItem>
+<TabItem value="circleci" label="Circle CI">
+<CodeBlock language="yaml" title=".circleci/config.yml">
+{`version: 2.1
+jobs:
+  job:
+    steps:
+      - checkout
+      - run: |
+          sudo apt-get update && sudo apt-get install -y curl unzip
+          curl -fsSL https://cli.fluentci.io | bash
+          fluentci --version
+        name: Setup FluentCI
+      - run: fluentci run --wasm opentofu init
+        name: init
+      - run: fluentci run --wasm opentofu validate
+        name: validate
+      - run: fluentci run --wasm opentofu plan
+        name: plan
+      - run: fluentci run --wasm opentofu apply
+        name: apply
+    machine:
+      image: ubuntu-2004:2023.07.1
+workflows:
+  fluentci:
+    jobs:
+      - job
+      `}
+</CodeBlock>
+</TabItem>
+<TabItem value="azure" label="Azure Pipelines">
+<CodeBlock language="yaml" title="azure-pipelines.yml">
+{`trigger:
+  - main
+pool:
+  vmImage: ubuntu-latest
+steps:
+  - script: |
+      curl -fsSL https://cli.fluentci.io | bash
+      fluentci --version
+      echo "##vso[task.prependpath]\${HOME}/.deno/bin
+    displayName: Setup FluentCI
+  - script: fluentci run --wasm opentofu init
+    displayName: init
+  - script: fluentci run --wasm opentofu validate
+    displayName: validate
+  - script: fluentci run --wasm opentofu plan
+    displayName: plan
+  - script: fluentci run --wasm opentofu apply
+    displayName: apply
+    `}
+</CodeBlock>
+</TabItem>
+<TabItem value="aws" label="AWS CodePipeline">
+<CodeBlock language="yaml" title="buildspec.yml">
+{`version: 0.2
+phases:
+  install:
+    commands:
+      - curl -fsSL https://cli.fluentci.io | bash
+      - fluentci --version
+  build:
+    commands:
+      - fluentci run --wasm opentofu init
+      - fluentci run --wasm opentofu validate
+      - fluentci run --wasm opentofu plan
+      - fluentci run --wasm opentofu apply
+  post_build:
+    commands:
+      - echo Build completed on \`date\`
+      `}
+</CodeBlock>
+</TabItem>
+</Tabs>

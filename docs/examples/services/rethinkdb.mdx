@@ -99,7 +99,8 @@ jobs:
     - dagger version
 rethinkdb:
   extends: .fluentci
-  script: - fluentci run --wasm rethinkdb start
+  script:
+    - fluentci run --wasm rethinkdb start
 `}
 
 </CodeBlock>

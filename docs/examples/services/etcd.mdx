@@ -20,10 +20,10 @@ fluentci run --wasm etcd start
 
 ## Functions
 
-| Name   | Description                                 |
-| ------ | --------------------------------------------|
-| start  | Start etcd server                       |
-| stop   | Stop etcd server                        |
+| Name  | Description       |
+| ----- | ----------------- |
+| start | Start etcd server |
+| stop  | Stop etcd server  |
 
 ## Code Usage
 
@@ -99,7 +99,8 @@ jobs:
     - dagger version
 etcd:
   extends: .fluentci
-  script: - fluentci run --wasm etcd start
+  script:
+    - fluentci run --wasm etcd start
 `}
 
 </CodeBlock>

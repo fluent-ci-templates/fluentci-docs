@@ -99,7 +99,8 @@ jobs:
     - dagger version
 mailcatcher:
   extends: .fluentci
-  script: - fluentci run --wasm mailcatcher start
+  script:
+    - fluentci run --wasm mailcatcher start
 `}
 
 </CodeBlock>

@@ -99,7 +99,8 @@ jobs:
     - dagger version
 clickhouse:
   extends: .fluentci
-  script: - fluentci run --wasm clickhouse start
+  script:
+    - fluentci run --wasm clickhouse start
 `}
 
 </CodeBlock>

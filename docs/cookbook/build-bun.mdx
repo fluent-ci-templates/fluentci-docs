@@ -80,10 +80,12 @@ jobs:
     - dagger version
 tests:
   extends: .fluentci
-  script: - fluentci run --wasm bun test
+  script:
+    - fluentci run --wasm bun test
 build:
   extends: .fluentci
-  script: - fluentci run --wasm bun build
+  script:
+    - fluentci run --wasm bun build
 `}
 
 </CodeBlock>

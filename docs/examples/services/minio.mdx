@@ -99,7 +99,8 @@ jobs:
     - dagger version
 minio:
   extends: .fluentci
-  script: - fluentci run --wasm minio start
+  script:
+    - fluentci run --wasm minio start
 `}
 
 </CodeBlock>

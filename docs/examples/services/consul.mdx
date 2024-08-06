@@ -101,7 +101,8 @@ jobs:
     - dagger version
 consul:
   extends: .fluentci
-  script: - fluentci run --wasm consul start
+  script:
+    - fluentci run --wasm consul start
 `}
 
 </CodeBlock>

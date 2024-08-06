@@ -99,7 +99,8 @@ jobs:
     - dagger version
 postgres:
   extends: .fluentci
-  script: - fluentci run --wasm postgres start
+  script:
+    - fluentci run --wasm postgres start
 `}
 
 </CodeBlock>

@@ -82,13 +82,16 @@ jobs:
     - dagger version
 code_quality:
   extends: .fluentci
-  script: - fluentci run --wasm flutter code_quality
+  script:
+    - fluentci run --wasm flutter code_quality
 test:
   extends: .fluentci
-  script: - fluentci run --wasm flutter test
+  script:
+    - fluentci run --wasm flutter test
 build:
   extends: .fluentci
-  script: - fluentci run --wasm flutter build
+  script:
+    - fluentci run --wasm flutter build
 `}
 
 </CodeBlock>

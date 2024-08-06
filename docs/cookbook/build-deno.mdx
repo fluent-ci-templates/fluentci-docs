@@ -82,16 +82,20 @@ jobs:
     - dagger version
 fmt:
   extends: .fluentci
-  script: - fluentci run --wasm deno fmt
+  script:
+    - fluentci run --wasm deno fmt
 lint:
   extends: .fluentci
-  script: - fluentci run --wasm deno lint
+  script:
+    - fluentci run --wasm deno lint
 tests:
   extends: .fluentci
-  script: - fluentci run --wasm deno test
+  script:
+    - fluentci run --wasm deno test
 compile:
   extends: .fluentci
-  script: - fluentci run --wasm deno compile -A --output myapp --target x86_64-unknown-linux-gnu main.ts
+  script:
+    - fluentci run --wasm deno compile -A --output myapp --target x86_64-unknown-linux-gnu main.ts
 `}
 
 </CodeBlock>

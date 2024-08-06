@@ -99,7 +99,8 @@ jobs:
     - dagger version
 rabbitmq:
   extends: .fluentci
-  script: - fluentci run --wasm rabbitmq start
+  script:
+    - fluentci run --wasm rabbitmq start
 `}
 
 </CodeBlock>

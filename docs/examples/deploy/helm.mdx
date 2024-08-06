@@ -1,0 +1,168 @@
+---
+sidebar_position: 10
+title: Helm
+---
+
+[Helm](https://helm.sh) is a package manager for Kubernetes that helps you define, install, and manage Kubernetes applications.
+
+## 🚀 Usage
+
+Add the following command to your CI configuration file:
+
+```bash
+fluentci run --wasm helm setup
+```
+
+## Commands
+
+| Name     | Description                                                                  |
+| -------- | ---------------------------------------------------------------------------- |
+| setup    | Installs a specific version of Helm.                                         |
+| install  | Install a chart                                                              |
+| lint     | Examine a chart for possible issues                                          |
+| package  | Package a chart directory into a chart archive                               |
+| pull     | Pull a chart from a repository and (optionally) unpack it in local directory |
+| push     | Push a chart package to a chart repository                                   |
+| registry | login to or logout from a registry                                           |
+| rollback | Rollback to a previous release                                               |
+| test     | Run tests for a release                                                      |
+| upgrade  | Upgrade a release                                                            |
+
+## Code Examples
+
+Add `fluentci-pdk` crate to your `Cargo.toml`:
+
+```toml
+[dependencies]
+fluentci-pdk = "0.2.1"
+```
+
+Use the following code to call a module function:
+
+```rust
+use fluentci_pdk::dag;
+
+// ...
+
+dag().call(
+  "https://pkg.fluentci.io/helm@v0.1.0?wasm=1",
+  "setup",
+  vec!["latest"],
+)?;
+```
+
+## CI/CD Integration
+
+The following example shows how to integrate FluentCI with popular CI providers to setup Helm:
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+
+<Tabs>
+  <TabItem value="gha" label="Github Actions">
+    <CodeBlock language="yaml" title="ci.yml">
+      {`name: ci
+on:
+  push:
+    branches:
+      - main
+jobs:
+  tasks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Remove preinstalled helm
+        run: |
+          sudo rm -rf \`which helm\`
+      - name: Setup Fluent CI
+        uses: fluentci-io/setup-fluentci@v5
+      - name: Install helm
+        run: fluentci run --wasm helm setup
+    `}
+    </CodeBlock>
+  </TabItem>
+  <TabItem value="gitlab" label="GitLab CI">
+    <CodeBlock language="yaml" title=".gitlab-ci.yml">
+      {`.docker:
+  image: denoland/deno:debian-1.42.4
+  services:
+    - docker:\${DOCKER_VERSION}-dind
+  variables:
+    DOCKER_HOST: tcp://docker:2376
+    DOCKER_TLS_VERIFY: "1"
+    DOCKER_TLS_CERTDIR: /certs
+    DOCKER_CERT_PATH: /certs/client
+    DOCKER_DRIVER: overlay2
+    DOCKER_VERSION: 20.10.16
+    GITLAB_ACCESS_TOKEN: $GITLAB_ACCESS_TOKEN
+    FIREBASE_TOKEN: $FIREBASE_TOKEN
+.fluentci:
+  extends: .docker
+  before_script:
+    - apt-get update
+    - apt-get install -y curl tar gzip ca-certificates openssl git unzip libncursesw6
+    - deno install -A -r https://cli.fluentci.io -n fluentci
+    - fluentci --version
+    - curl -L https://dl.dagger.io/dagger/install.sh | DAGGER_VERSION=0.12.3 sh
+    - mv bin/dagger /usr/local/bin
+    - dagger version
+install-helm:
+  extends: .fluentci
+  script:
+    - fluentci run --wasm helm setup
+`}
+
+</CodeBlock>
+</TabItem>
+<TabItem value="circleci" label="Circle CI">
+<CodeBlock language="yaml" title=".circleci/config.yml">
+{`version: 2.1
+jobs:
+  job:
+    steps:
+      - checkout
+      - run: |
+          sudo apt-get update && sudo apt-get install -y curl unzip
+          curl -fsSL https://cli.fluentci.io | bash
+          fluentci --version
+        name: Install helm
+      - run: fluentci run --wasm helm setup
+      `}
+</CodeBlock>
+</TabItem>
+<TabItem value="azure" label="Azure Pipelines">
+<CodeBlock language="yaml" title="azure-pipelines.yml">
+{`trigger:
+  - main
+pool:
+  vmImage: ubuntu-latest
+steps:
+  - script: |
+      curl -fsSL https://cli.fluentci.io | bash
+      fluentci --version
+      echo "##vso[task.prependpath]\${HOME}/.deno/bin
+    displayName: Setup FluentCI
+  - script: fluentci run --wasm helm setup
+    displayName: install helm
+    `}
+</CodeBlock>
+</TabItem>
+<TabItem value="aws" label="AWS CodePipeline">
+<CodeBlock language="yaml" title="buildspec.yml">
+{`version: 0.2
+phases:
+  install:
+    commands:
+      - curl -fsSL https://cli.fluentci.io | bash
+      - fluentci --version
+  build:
+    commands:
+      - fluentci run --wasm helm setup
+  post_build:
+    commands:
+      - echo Build completed on \`date\`
+  `}
+</CodeBlock>
+</TabItem>
+</Tabs>

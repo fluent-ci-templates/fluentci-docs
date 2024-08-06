@@ -135,11 +135,15 @@ steps:
 version: 0.2
 phases:
 install:
-commands: - curl -fsSL https://cli.fluentci.io | bash - fluentci --version
-build:
-commands: - fluentci run --wasm codecov upload
-post_build:
-commands: - echo Build completed on \`date\``}
+commands:
+
+- curl -fsSL https://cli.fluentci.io | bash - fluentci --version
+  build:
+  commands:
+  - fluentci run --wasm codecov upload
+    post_build:
+    commands:
+  - echo Build completed on \`date\``}
 
 </CodeBlock>
 </TabItem>

@@ -99,7 +99,8 @@ jobs:
     - dagger version
 nginx:
   extends: .fluentci
-  script: - fluentci run --wasm nginx start
+  script:
+    - fluentci run --wasm nginx start
 `}
 
 </CodeBlock>

@@ -68,7 +68,7 @@ jobs:
       - name: Setup Fluent CI
         uses: fluentci-io/setup-fluentci@v5
       - name: Run daemon Service
-        run: fluentci run --wasm daemon start
+        run: fluentci run --wasm daemon start demo pkgx bunx serve -p 4000
 `}
     </CodeBlock>
   </TabItem>
@@ -99,7 +99,8 @@ jobs:
     - dagger version
 daemon:
   extends: .fluentci
-  script: - fluentci run --wasm daemon start
+  script:
+    - fluentci run --wasm daemon start demo pkgx bunx serve -p 4000
 `}
 
 </CodeBlock>
@@ -116,7 +117,7 @@ jobs:
           curl -fsSL https://cli.fluentci.io | bash
           fluentci --version
         name: Setup FluentCI
-      - run: fluentci run --wasm daemon start
+      - run: fluentci run --wasm daemon start demo pkgx bunx serve -p 4000
         name: start daemon service
     machine:
       image: ubuntu-2004:2023.07.1
@@ -139,7 +140,7 @@ steps:
       fluentci --version
       echo "##vso[task.prependpath]\${HOME}/.deno/bin
     displayName: Setup FluentCI
-  - script: fluentci run --wasm daemon start
+  - script: fluentci run --wasm daemon start demo pkgx bunx serve -p 4000
     displayName: start daemon service
 `}
 </CodeBlock>
@@ -154,7 +155,7 @@ phases:
       - fluentci --version
   build:
     commands:
-      - fluentci run --wasm daemon start
+      - fluentci run --wasm daemon start demo pkgx bunx serve -p 4000
   post_build:
     commands:
       - echo Build completed on \`date\`

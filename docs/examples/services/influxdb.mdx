@@ -99,7 +99,8 @@ jobs:
     - dagger version
 influxdb:
   extends: .fluentci
-  script: - fluentci run --wasm influxdb start
+  script:
+    - fluentci run --wasm influxdb start
 `}
 
 </CodeBlock>

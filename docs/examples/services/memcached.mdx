@@ -99,7 +99,8 @@ jobs:
     - dagger version
 memcached:
   extends: .fluentci
-  script: - fluentci run --wasm memcached start
+  script:
+    - fluentci run --wasm memcached start
 `}
 
 </CodeBlock>

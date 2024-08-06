@@ -99,7 +99,8 @@ jobs:
     - dagger version
 zipkin:
   extends: .fluentci
-  script: - fluentci run --wasm zipkin start
+  script:
+    - fluentci run --wasm zipkin start
 `}
 
 </CodeBlock>

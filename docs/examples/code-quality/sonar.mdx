@@ -1,0 +1,162 @@
+---
+sidebar_position: 1
+title: Sonar
+---
+
+[SonarCloud](https://www.sonarsource.com/products/sonarcloud/) is a widely used static analysis solution for continuous code quality and security inspection. It helps developers identify and fix issues in their code that could lead to bugs, vulnerabilities, or decreased development velocity. SonarCloud supports the most popular programming languages, including Java, JavaScript, TypeScript, C#, Python, C, C++, and [many more](https://www.sonarsource.com/knowledge/languages/).
+
+## Requirements
+
+- Create your account on SonarCloud. Sign up for free now if it's not already the case! [SonarCloud Sign up](https://www.sonarsource.com/products/sonarcloud/signup/?utm_medium=referral&utm_source=github&utm_campaign=sc-signup&utm_content=signup-sonarcloud-listing-x-x&utm_term=ww-psp-x)
+- The repository to analyze is set up on SonarCloud. [Set it up](https://sonarcloud.io/projects/create) in just one click.
+
+## Environment variables
+
+To integrate FluentCI with SonarCloud, you need to set the following environment variables:
+
+| Variable Name      | Description                                        |
+| ------------------ | -------------------------------------------------- |
+| SONAR_TOKEN        | The SonarCloud token to authenticate the analysis. |
+| SONAR_ORGANIZATION | The SonarCloud organization key.                   |
+| SONAR_PROJECT_KEY  | The SonarCloud project key.                        |
+| SONAR_HOST_URL     | The SonarCloud host URL.                           |
+| SONAR_SOURCES      | The source code directory to analyze.              |
+
+## 🚀 Using the Sonar Plugin
+
+You can use FluentCI to analyze your code by running the following command:
+
+```bash
+fluentci run --wasm sonar analyze
+```
+
+This command will analyze your code and send the results to SonarCloud. You can add this command in your CI/CD pipeline to automate the code analysis process.
+
+## CI/CD Integration
+
+The folowing example shows how to integrate FluentCI with popular CI providers to analyze your code with SonarCloud:
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+
+<Tabs>
+  <TabItem value="gha" label="Github Actions">
+    <CodeBlock language="yaml" title="ci.yml">
+      {`name: ci
+on:
+  push:
+    branches:
+      - main
+jobs:
+  tasks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Fluent CI
+        uses: fluentci-io/setup-fluentci@v5
+        with:
+          wasm: true
+          plugin: sonar
+          args: |
+            analyze
+        env:
+           SONAR_TOKEN: \${{ secrets.SONAR_TOKEN }}
+           SONAR_ORGANIZATION: \${{ env.SONAR_ORGANIZATION }}
+           SONAR_PROJECT_KEY: \${{ env.SONAR_PROJECT_KEY }}
+           SONAR_SOURCES: .
+           SONAR_HOST_URL: https://sonarcloud.io
+      `}
+    </CodeBlock>
+  </TabItem>
+  <TabItem value="gitlab" label="GitLab CI">
+    <CodeBlock language="yaml" title=".gitlab-ci.yml">
+      {`
+.docker:
+  image: denoland/deno:debian-1.42.4
+  services:
+    - docker:\${DOCKER_VERSION}-dind
+  variables:
+    DOCKER_HOST: tcp://docker:2376
+    DOCKER_TLS_VERIFY: "1"
+    DOCKER_TLS_CERTDIR: /certs
+    DOCKER_CERT_PATH: /certs/client
+    DOCKER_DRIVER: overlay2
+    DOCKER_VERSION: 20.10.16
+    GITLAB_ACCESS_TOKEN: $GITLAB_ACCESS_TOKEN
+.fluentci:
+  extends: .docker
+  before_script:
+    - apt-get update
+    - apt-get install -y curl tar gzip ca-certificates openssl git unzip libncursesw6
+    - deno install -A -r https://cli.fluentci.io -n fluentci 
+    - fluentci --version 
+    - curl -L https://dl.dagger.io/dagger/install.sh | DAGGER_VERSION=0.12.3 sh 
+    - mv bin/dagger /usr/local/bin 
+    - dagger version
+analyze:
+  extends: .fluentci
+  script: 
+    - fluentci run --wasm sonar analyze
+`}
+
+</CodeBlock>
+</TabItem>
+<TabItem value="circleci" label="Circle CI">
+<CodeBlock language="yaml" title=".circleci/config.yml">
+{`version: 2.1
+jobs:
+  job:
+    steps:
+      - checkout
+      - run: |
+          sudo apt-get update && sudo apt-get install -y curl unzip
+          curl -fsSL https://cli.fluentci.io | bash
+          fluentci --version
+        name: Setup FluentCI
+      - run: fluentci run --wasm sonar analyze
+        name: analyze
+    machine:
+      image: ubuntu-2004:2023.07.1
+workflows:
+  fluentci:
+    jobs:
+      - job
+`}
+</CodeBlock>
+</TabItem>
+<TabItem value="azure" label="Azure Pipelines">
+<CodeBlock language="yaml" title="azure-pipelines.yml">
+{`trigger:
+  - main
+pool:
+  vmImage: ubuntu-latest
+steps:
+  - script: |
+      curl -fsSL https://cli.fluentci.io | bash
+      fluentci --version
+      echo "##vso[task.prependpath]\${HOME}/.deno/bin
+    displayName: Setup FluentCI
+  - script: |
+      fluentci run --wasm sonar analyze
+    displayName: analyze
+`}
+</CodeBlock>
+</TabItem>
+<TabItem value="aws" label="AWS CodePipeline">
+<CodeBlock language="yaml" title="buildspec.yml">
+{`version: 0.2
+phases:
+  install:
+    commands:
+      - curl -fsSL https://cli.fluentci.io | bash
+      - fluentci --version
+  build:
+    commands:
+      - fluentci run --wasm sonar analyze
+  post_build:
+    commands:
+      - echo Build completed on \`date\``}
+</CodeBlock>
+</TabItem>
+</Tabs>

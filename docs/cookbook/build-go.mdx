@@ -79,10 +79,12 @@ jobs:
     - dagger version
 test:
   extends: .fluentci
-  script: - fluentci run --wasm go test
+  script:
+    - fluentci run --wasm go test
 build:
   extends: .fluentci
-  script: - fluentci run --wasm go build
+  script:
+    - fluentci run --wasm go build
 `}
 
 </CodeBlock>

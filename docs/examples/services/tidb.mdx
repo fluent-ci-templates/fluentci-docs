@@ -99,7 +99,8 @@ jobs:
     - dagger version
 tidb:
   extends: .fluentci
-  script: - fluentci run --wasm tidb start
+  script:
+    - fluentci run --wasm tidb start
 `}
 
 </CodeBlock>

@@ -99,7 +99,8 @@ jobs:
     - dagger version
 arangodb:
   extends: .fluentci
-  script: - fluentci run --wasm arangodb start
+  script:
+    - fluentci run --wasm arangodb start
 `}
 
 </CodeBlock>

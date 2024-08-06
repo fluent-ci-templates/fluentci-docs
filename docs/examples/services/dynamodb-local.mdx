@@ -99,7 +99,8 @@ jobs:
     - dagger version
 dynamodb-local:
   extends: .fluentci
-  script: - fluentci run --wasm dynamodb-local start
+  script:
+    - fluentci run --wasm dynamodb-local start
 `}
 
 </CodeBlock>

@@ -99,7 +99,8 @@ jobs:
     - dagger version
 php-fpm:
   extends: .fluentci
-  script: - fluentci run --wasm php-fpm start
+  script:
+    - fluentci run --wasm php-fpm start
 `}
 
 </CodeBlock>
