@@ -119,7 +119,7 @@ jobs:
           fluentci --version
         name: Setup FluentCI
       - run: fluentci run --wasm syft scan hashicorp/terraform:latest -o spdx-json=syft-report.json
-        name: generate sbon
+        name: generate sbom
     machine:
       image: ubuntu-2004:2023.07.1
 workflows:
@@ -143,7 +143,7 @@ steps:
     displayName: Setup FluentCI
   - script: |
       fluentci run --wasm syft scan hashicorp/terraform:latest -o spdx-json=syft-report.json
-    displayName: generate sbon
+    displayName: generate sbom
 `}
 </CodeBlock>
 </TabItem>

@@ -133,7 +133,7 @@ jobs:
           fluentci --version
         name: Setup FluentCI
       - run: fluentci run --wasm trufflehog github --repo=https://github.com/dustin-decker/secretsandstuff --fail
-        name: generate sbon
+        name: generate sbom
     machine:
       image: ubuntu-2004:2023.07.1
 workflows:
@@ -157,7 +157,7 @@ steps:
     displayName: Setup FluentCI
   - script: |
       fluentci run --wasm trufflehog github --repo=https://github.com/dustin-decker/secretsandstuff --fail
-    displayName: generate sbon
+    displayName: generate sbom
 `}
 </CodeBlock>
 </TabItem>
